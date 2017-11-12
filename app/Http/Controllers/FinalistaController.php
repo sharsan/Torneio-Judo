@@ -48,7 +48,8 @@ class FinalistaController extends Controller
 
    $this->validate(request(), [
                  // 'nome' => 'required|unique:finalistas|max:40',  
-     'atleta' => 'required|max:40',  
+     'primeiro' => 'required|max:40',  
+     'segundo' => 'required|max:40'  
    ]);
    $finalista = new Finalista([
      'torneio' => $request->get('torneio'), 

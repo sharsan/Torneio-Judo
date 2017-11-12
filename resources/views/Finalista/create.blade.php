@@ -93,8 +93,8 @@
     </div>  
     <!-- Vencedor -->
     <div class="col-md-10"> 
-      <label for="vencedor"> Vencedor:
-       <select id="vencedor" name="vencedor">
+      <label for="primeiro"> Vencedor:
+       <select id="primeiro" name="primeiro">
 
         @foreach($inscrito as $insc)
         <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
@@ -104,8 +104,8 @@
   </div> 
   <!-- Vencido -->
   <div class="col-md-10"> 
-    <label for="vencido"> Vencido:
-     <select id="vencido" name="vencido">
+    <label for="segundo"> Vencido:
+     <select id="segundo" name="segundo">
 
       @foreach($inscrito as $insc)
       <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
