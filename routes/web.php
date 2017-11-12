@@ -25,7 +25,8 @@ Route::resource('luta'      , 'LutaController'      );
 Route::resource('luta12'    , 'Luta12Controller'    ); 
 Route::resource('luta34'    , 'Luta34Controller'    ); 
 Route::resource('standard'  , 'StandardController'  ); 
-Route::resource('treinador' , 'TreinadorController' );  
+Route::resource('treinador' , 'TreinadorController' );
+Route::resource('terceiro'  , 'TerceiroController'  );  
 Route::resource('torneio'   , 'TorneioController'   );  
 Route::resource('usuario'   , 'UsuarioController'   );   
 

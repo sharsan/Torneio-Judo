@@ -57,8 +57,7 @@ class FinalistaController extends Controller
      'vencedor12' => $request->get('vencedor12'), 
      'vencedor34' => $request->get('vencedor34'), 
      'primeiro' => $request->get('primeiro'), 
-     'segundo' => $request->get('segundo'), 
-     'segundo' => $request->get('segundo'), 
+     'segundo' => $request->get('segundo'),  
      'descricao' => $request->get('descricao') 
    ]);
 
