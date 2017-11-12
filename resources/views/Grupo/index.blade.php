@@ -41,7 +41,7 @@
           <tr>
             <td>{{$post['id']}}</td> 
             <td>{{$post['torneio']}}</td>
-            <td>{{$post['escalao']}}</td>
+            <td>{{$post['escalao']}}</td> 
             <td>{{$post['atleta1']}}</td>
             <td>{{$post['atleta2']}}</td>
             <td>{{$post['atleta3']}}</td>

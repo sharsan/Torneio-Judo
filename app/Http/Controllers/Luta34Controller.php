@@ -5,7 +5,8 @@ use App\Luta34;
 use App\Arbitro;  
 use App\Atleta;    
 use App\Escalao;   
-use App\Grupo;  
+use App\Grupo;     
+use App\Inscrito;  
 use App\Torneio; 
 
 class Luta34Controller extends Controller
@@ -22,16 +23,17 @@ class Luta34Controller extends Controller
 
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
-   $grupo = Grupo::all();
    $escalao = Escalao::all();
+   $grupo = Grupo::all();
+   $inscrito = Inscrito::all();
    $torneio = Torneio::all();
-   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'grupo'=>$grupo,'torneio'=>$torneio]);
+   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'torneio'=>$torneio]);
  } 
 
  public function edit($id)
  {
    $luta34 = Luta34::find($id);
-
+   
    return view('luta34.edit', compact('luta34','id')); 
  } 
 
@@ -39,11 +41,11 @@ class Luta34Controller extends Controller
  {      
    request()->validate(  
     [    
-      'torneio' => 'torneio', 
+      'torneio' => 'required', 
       'atleta3' => 'required', 
-      'atleta4' => 'required', 
+      'atleta4' => 'required',  
       'vencedor' => 'required',
-      'vencido' => 'required'  
+      'vencido' => 'required' 
     ]); 
    Luta34::find($id)->update($request->all());
    return redirect()->route('luta34.index')
@@ -54,27 +56,25 @@ class Luta34Controller extends Controller
  public function store(Request $request)
  {      
    $this->validate(request(), [
-        // 'nome' => 'required|unique:lutas|max:40',
-
-    'torneio' => 'torneio', 
+        // 'nome' => 'required|unique:lutas|max:40', 
+    'torneio' => 'required', 
     'atleta3' => 'required', 
-    'atleta4' => 'required', 
+    'atleta4' => 'required',  
     'vencedor' => 'required',
-    'vencido' => 'required'  
+    'vencido' => 'required' 
   ]);
-   $luta34 = new Luta34([ 
+   $luta34 = new Luta34([  
     'torneio' => $request->get('torneio'),
     'atleta3' => $request->get('atleta3'),
     'atleta4' => $request->get('atleta4'), 
-    'juri' => $request->get('juri'),  
     'vencedor' => $request->get('vencedor'),
-    'vencido' => $request->get('vencido'),
+    'vencido' => $request->get('vencido'), 
     'descricao' => $request->get('descricao')
                //campos de exigencia de valores
   ]);
    Luta34::create($request->all());
    return back()->with('success', 'Luta adicionada com sucesso'); 
-
+   
  }
 
  public function destroy($id)
