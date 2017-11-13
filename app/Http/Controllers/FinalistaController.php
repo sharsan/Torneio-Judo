@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Finalista; 
+
 use App\Arbitro;  
 use App\Atleta;   
 use App\Escalao;  

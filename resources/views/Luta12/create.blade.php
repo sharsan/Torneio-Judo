@@ -1,8 +1,8 @@
 @extends('admin')
 @section('content')
-<title>Competicoes </title>
+<title>Adicionar vencedores do grupo A</title>
 <div class="container"> 
-  <h2>Registrar luta</h2><br> 
+  <h2>Registrar vencedores do grupo A do escalão</h2><br> 
   <a href="{{URL::to('luta12')}}" title=""><h4><- voltar</h4></a>
   
   @if ($errors->any())
@@ -21,10 +21,35 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('luta12')}}">
+<form method="post"  action="{{url('luta12')}}"> 
 
- {{csrf_field()}}   
- <!-- <div class="row">   -->
+ <table class="table table-striped">  
+  <thead>   <a href="{{URL::to('luta12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
+
+   <thead>
+    <tr>
+      <th>ID</th> 
+      <th>Escalão</th> 
+      <th>Atleta 1</th>
+      <th>Atleta 2</th> 
+      <th>Júri</th>
+      <th>Vencedor</th> 
+    </tr>
+  </thead>
+  
+  @foreach($luta12 as $post)
+  <tr>
+    <td>{{$post['id']}}</td> 
+    <td>{{$post['escalao']}}</td>
+    <td>{{$post['atleta1']}}</td>
+    <td>{{$post['atleta2']}}</td>
+    <td>{{$post['juri']}}</td>
+    <td>{{$post['vencedor']}}</td>  
+    @endforeach
+  </table>
+
+  {{csrf_field()}}   
+  <!-- <div class="row">   -->
    <div class="row">
     <div class="form-group col-md-8">   
      <!-- Nome do campeonato  -->  

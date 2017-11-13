@@ -11,9 +11,11 @@ class CreateLutasTable extends Migration
         Schema::create('lutas', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->string('grupo', 40);
-            $table->string('atleta1', 40); 
-            $table->string('atleta2', 40); 
+            $table->string('torneio', 45);
+            $table->string('escalao', 40); 
+            $table->string('primeiro', 40); 
+            $table->string('segundo', 40); 
+            $table->string('terceiro', 40);  
             $table->string('juri', 40); 
             $table->string('descricao', 150); 
             $table->timestamps();

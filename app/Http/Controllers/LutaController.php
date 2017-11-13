@@ -2,15 +2,23 @@
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use App\Luta;
-use App\Grupo; 
-use App\Arbitro; 
+
+use App\Arbitro;  
+use App\Atleta;   
+use App\Escalao;
+use App\Finalista; 
+use App\Grupo;   
+use App\Luta12;  
+use App\Luta34;  
+use App\Torneio; 
+use App\Terceiro;  
 
 class LutaController extends Controller
 {
-  
+
   public function index()
   {
-    
+
    $luta = Luta::all()->toArray();        
    return view('luta.index', compact('luta'));
  } 
@@ -18,9 +26,17 @@ class LutaController extends Controller
  public function create()
  {     
 
+   $arbitro =Arbitro::all();
+   $atleta =Atleta::all();
+   $escalao = Escalao::all();
+   $finalista = Finalista::all();
    $grupo = Grupo::all();
-   $arbitro =Arbitro::all(); ;
-   return view("luta.create",['grupo'=>$grupo,'arbitro'=>$arbitro]); 
+   $luta12 = Luta34::all();
+   $luta34 = Luta34::all();
+   $torneio= Torneio::all();
+   $terceiro= Terceiro::all();
+
+   return view("luta.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'finalista'=>$finalista,'grupo'=>$grupo,'luta12'=>$luta12,'luta34'=>$luta34,'terceiro'=>$terceiro,'torneio'=>$torneio]); 
  } 
 
  public function edit($id)
@@ -34,9 +50,9 @@ class LutaController extends Controller
  {      
    request()->validate(  
     [   
-      'atleta1' => 'required',
-      'atleta2' => 'required',
-      'vencedor' => 'required' 
+      'torneio' => 'required',
+      'primeiro' => 'required',
+      'segundo' => 'required' , 
     ]); 
    Luta::find($id)->update($request->all());
    return redirect()->route('luta.index')
@@ -48,19 +64,19 @@ class LutaController extends Controller
  {      
    $this->validate(request(), [
         // 'nome' => 'required|unique:lutas|max:40',
-    'atleta' => 'required'
+    'torneio' => 'required',
+    'primeiro' => 'required',
+    'segundo' => 'required' 
   ]);
    $luta = new Luta([
-    'grupo' => $request->get('grupo'),
-    'atleta1' => $request->get('atleta1'),
-    'atleta2' => $request->get('atleta2'),
-    'vencedor' => $request->get('vencedor'), 
-    'juri' => $request->get('juri'),  
+    'torneio' => $request->get('torneio'),
+    'primeiro' => $request->get('primeiro'),
+    'segundo' => $request->get('segundo'),
     'descricao' => $request->get('descricao')
                //campos de exigencia de valores
   ]);
    Luta::create($request->all());
-   return back()->with('success', 'Luta adicionada com sucesso'); 
+   return back()->with('success', 'Lutas adicionadas com sucesso'); 
    
  }
 

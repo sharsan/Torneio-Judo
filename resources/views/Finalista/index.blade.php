@@ -1,18 +1,20 @@
 @extends('admin')
 @section('content')
-<title>Finalistas</title>
+<title>Finals</title>
 <div class="container"> 
- <h3><center><th>Finalistas</th></center> </h3>
+ <h3><center><th>Finalistas por escalões</th></center> </h3>
 
  <table class="table table-striped">  
-  <thead>   <a href="{{URL::to('finalista/create')}}" title=""><h4>+ Categoria de finalistas</h4></a>
+   <thead>   <a href="{{URL::to('luta')}}" title=""><h4>Ver Finalistas</h4></a>
     <thead>
-      <tr>
-        <th>ID</th> 
-        <th>Nome do campeonato</th>
-        <th>Escalão</th> 
-        <th>1º lugar</th>
-        <th>2º lugar</th>
+      <thead>   <a href="{{URL::to('finalista/create')}}" title=""><h4> + Registrar final</h4></a>
+
+        <tr>
+          <th>ID</th> 
+          <th>Nome do campeonato</th>
+          <th>Escalão</th> 
+          <th>1º lugar</th>
+          <th>2º lugar</th>
 {{--         <th>3º lugar</th>
   <th>3º lugar</th> --}}
   <th>Júri</th>

@@ -2,11 +2,13 @@
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use App\Luta12;  
+
 use App\Arbitro;  
 use App\Atleta;    
 use App\Escalao;   
 use App\Grupo;     
-use App\Inscrito;  
+use App\Inscrito;   
+use App\Luta;  
 use App\Torneio; 
 
 class Luta12Controller extends Controller
@@ -20,14 +22,17 @@ class Luta12Controller extends Controller
 
  public function create()
  {     
+   $luta12 = Luta12::all();
 
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
+   $luta = Luta::all();
    $torneio = Torneio::all();
-   return view("luta12.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'torneio'=>$torneio]);
+
+   return view("luta12.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta'=>$luta,'luta12'=>$luta12, 'torneio'=>$torneio]);
  } 
 
  public function edit($id)
@@ -74,7 +79,7 @@ class Luta12Controller extends Controller
   ]);
    Luta12::create($request->all());
    return back()->with('success', 'Luta adicionada com sucesso'); 
-   
+
  }
 
  public function destroy($id)

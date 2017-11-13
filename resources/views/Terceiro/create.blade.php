@@ -1,9 +1,10 @@
 @extends('admin')
 @section('content')
-<title>Luta final </title>
+<title>3º e 4º lugar</title>
 <div class="container"> 
-  <h2>Registrar final</h2><br> 
+  <h2>Registrar final do 3º e 4º lugar</h2><br> 
   <a href="{{URL::to('finalista')}}" title=""><h4><- voltar</h4></a>
+  <a href="{{URL::to('luta')}}" title=""><h4>Ver finais</h4></a>
   
   @if ($errors->any())
   <div class="alert alert-danger">
@@ -21,98 +22,145 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('finalista')}}">
+<form method="post"  action="{{url('finalista')}}"> 
+  <h3>Grupo A</h3><br> 
 
- {{csrf_field()}}   
- <!-- <div class="row">   -->
-   <div class="row">
-    <div class="form-group col-md-8">   
-     <!-- Nome do campeonato  -->  
+  <table class="table table-striped">   
 
-     <div class="col-md-10"> <br> 
-      <label for="torneio"> Nome do Torneio :
-        <select id="torneio" name="torneio">
+   <thead>
+    <tr>
+      <th>ID</th> 
+      <th>Torneio</th> 
+      <th>Escalão</th>  
+      <th>2º do grupo A</th> 
+      <th>Júri</th> 
+    </tr>
+  </thead>
+  
+  @foreach($luta12 as $post)
+  <tr>
+    <td>{{$post['id']}}</td> 
+    <td>{{$post['torneio']}}</td>
+    <td>{{$post['escalao']}}</td> 
+    <td>{{$post['vencido']}}</td>
+    <td>{{$post['juri']}}</td>   
+    @endforeach
+  </table>
 
-          @foreach($torneio as $tor)
-          <option value="{{$tor->nome}}">{{$tor->nome}} </option>
-          @endforeach
-        </select>
-      </label>    
-    </div> 
-    <!-- Escalao  --> 
-    <div class="col-md-10"> <br> 
-      <label for="escalao">Escalão de peso :
-        <select id="escalao" name="escalao">
+  <h3>Grupo B</h3><br>
+  <table class="table table-striped">   
 
-          @foreach($escalao as $esc)
-          <option value="{{$esc->nome}}">{{$esc->nome}} </option>
-          @endforeach
-        </select>
-      </label>    
-    </div> 
-    
-    <!-- juri : -->
-    <div class="col-md-10"> <br> 
-      <label for="juri"> Júri :
-        <select id="juri" name="juri">
+    <thead>
+      <tr>
+        <th>ID</th> 
+        <th>Torneio</th> 
+        <th>Escalão</th>  
+        <th>2º do grupo B</th> 
+        <th>Júri</th> 
+      </tr>
+    </thead>
 
-          @foreach($arbitro as $arb)
-          <option value="{{$arb->nome}}">{{$arb->nome}} </option>
-          @endforeach
-        </select>
-      </label>    
-    </div> 
+    @foreach($luta34 as $post)
+    <tr>
+      <td>{{$post['id']}}</td> 
+      <td>{{$post['torneio']}}</td>
+      <td>{{$post['escalao']}}</td> 
+      <td>{{$post['vencido']}}</td>
+      <td>{{$post['juri']}}</td>   
+      @endforeach
+    </table>
 
-    
-    <div class="row"> 
 
-     <div class="form-group col-md-8">    
-       <h3>Selecione os finalistas</h3>   
-       <!-- 1º lugar -->
+    {{csrf_field()}}   
+    <!-- <div class="row">   -->
+     <div class="row">
+      <div class="form-group col-md-8">   
+       <!-- Nome do campeonato  -->  
 
        <div class="col-md-10"> <br> 
-        <label for="vencedor12"> Atleta 1:
-          <select id="vencedor12" name="vencedor12">
+        <label for="torneio"> Nome do Torneio :
+          <select id="torneio" name="torneio">
 
-            @foreach($luta12 as $luta)
-            <option value="{{$luta->vencedor}}">{{$luta->vencedor}} </option>
+            @foreach($torneio as $tor)
+            <option value="{{$tor->nome}}">{{$tor->nome}} </option>
             @endforeach
           </select>
         </label>    
       </div> 
-      <!-- 2º lugar -->
-      <div class="col-md-10"> 
-        <label for="vencedor34"> Atleta 2:
-         <select id="vencedor34" name="vencedor34">
+      <!-- Escalao  --> 
+      <div class="col-md-10"> <br> 
+        <label for="escalao">Escalão de peso :
+          <select id="escalao" name="escalao">
 
-          @foreach($luta34 as $luta)
-          <option value="{{$luta->vencedor}}">{{$luta->vencedor}} </option>
+            @foreach($escalao as $esc)
+            <option value="{{$esc->nome}}">{{$esc->nome}} </option>
+            @endforeach
+          </select>
+        </label>    
+      </div> 
+
+      <!-- juri : -->
+      <div class="col-md-10"> <br> 
+        <label for="juri"> Júri :
+          <select id="juri" name="juri">
+
+            @foreach($arbitro as $arb)
+            <option value="{{$arb->nome}}">{{$arb->nome}} </option>
+            @endforeach
+          </select>
+        </label>    
+      </div> 
+
+
+      <div class="row"> 
+
+       <div class="form-group col-md-8">    
+         <h3>Selecione os finalistas</h3>   
+         <!-- 1º lugar -->
+
+         <div class="col-md-10"> <br> 
+          <label for="vencedor12"> Atleta 1:
+            <select id="vencedor12" name="vencedor12">
+
+              @foreach($luta12 as $luta)
+              <option value="{{$luta->vencido}}">{{$luta->vencido}} </option>
+              @endforeach
+            </select>
+          </label>    
+        </div> 
+        <!-- 2º lugar -->
+        <div class="col-md-10"> 
+          <label for="vencedor34"> Atleta 2:
+           <select id="vencedor34" name="vencedor34">
+
+            @foreach($luta34 as $luta)
+            <option value="{{$luta->vencido}}">{{$luta->vencido}} </option>
+            @endforeach
+          </select> 
+        </label>
+      </div>  
+      <!-- Vencedor -->
+      <div class="col-md-10"> 
+        <label for="primeiro"> Vencedor:
+         <select id="primeiro" name="primeiro">
+
+          @foreach($inscrito as $insc)
+          <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
           @endforeach
         </select> 
       </label>
-    </div>  
-    <!-- Vencedor -->
+    </div> 
+    <!-- Vencido -->
     <div class="col-md-10"> 
-      <label for="primeiro"> Vencedor:
-       <select id="primeiro" name="primeiro">
+      <label for="segundo"> Vencido:
+       <select id="segundo" name="segundo">
 
         @foreach($inscrito as $insc)
         <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
         @endforeach
       </select> 
     </label>
-  </div> 
-  <!-- Vencido -->
-  <div class="col-md-10"> 
-    <label for="segundo"> Vencido:
-     <select id="segundo" name="segundo">
-
-      @foreach($inscrito as $insc)
-      <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
-      @endforeach
-    </select> 
-  </label>
-</div>  
+  </div>  
 </div> 
 
 

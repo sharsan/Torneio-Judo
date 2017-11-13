@@ -2,11 +2,13 @@
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use App\Luta34;  
+
 use App\Arbitro;  
 use App\Atleta;    
 use App\Escalao;   
 use App\Grupo;     
 use App\Inscrito;  
+use App\Luta;  
 use App\Torneio; 
 
 class Luta34Controller extends Controller
@@ -20,14 +22,17 @@ class Luta34Controller extends Controller
 
  public function create()
  {     
+   $luta34 = Luta34::all();
 
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
+   $luta = Luta::all();
    $torneio = Torneio::all();
-   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'torneio'=>$torneio]);
+
+   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta'=>$luta,'luta34'=>$luta34, 'torneio'=>$torneio]);
  } 
 
  public function edit($id)
