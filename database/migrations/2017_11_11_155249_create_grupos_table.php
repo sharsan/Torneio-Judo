@@ -9,8 +9,7 @@ class CreateGruposTable extends Migration
     public function up()
     {
         Schema::create('grupos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome', 45);
+            $table->increments('id'); 
             $table->string('torneio',40);
             $table->string('escalao',30);
             $table->string('atleta1', 45);
@@ -24,6 +23,6 @@ class CreateGruposTable extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('grupo4s');
+        Schema::dropIfExists('grupos');
     }
 }

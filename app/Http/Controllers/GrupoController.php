@@ -23,15 +23,21 @@ class GrupoController extends Controller
    $escalao =Escalao::all(); 
    $inscrito =Inscrito::all(); 
    $torneio =Torneio::all(); 
-   return view("grupo.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'torneio'=>$torneio]);
+   return view("grupo.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'inscrito'=>$inscrito,'torneio'=>$torneio]);
  }  
 
 
  public function edit($id)
  {
    $grupo = Grupo::find($id);
+
+   $arbitro =Arbitro::all(); 
+   $atleta =Atleta::all(); 
+   $escalao =Escalao::all(); 
+   $inscrito =Inscrito::all();
+   $torneio =Torneio::all(); 
    
-   return view('grupo.edit', compact('grupo','id')); 
+   return view('grupo.edit', compact('grupo','id','arbitro','atleta','escalao','inscrito','torneio')); 
  } 
  
  public function store(Request $request)
@@ -39,7 +45,10 @@ class GrupoController extends Controller
 
    $this->validate(request(), [
                  // 'nome' => 'required|unique:grupo|max:40',  
-     'nome' => 'required|max:40',  
+     'torneio' => 'required|max:40',  
+     'escalao' => 'required|max:40',  
+     'atleta1' => 'required|max:40',  
+     'atleta2' => 'required|max:40'   
    ]);
    $grupo = new Grupo([
      'juri' => $request->get('juri'), 
@@ -52,7 +61,7 @@ class GrupoController extends Controller
      'descricao' => $request->get('descricao') 
    ]);
 
-   $existe=Grupo::where("nome",$request->get('nome'))->where("escalao",$request->get('escalao'))->exists();
+   $existe=Grupo::where("torneio",$request->get('torneio'))->where("escalao",$request->get('escalao'))->exists();
 
    if($existe==false){
      Grupo::create($request->all()); 
@@ -66,8 +75,11 @@ public function update(Request $request, $id)
 {   request()->validate(
  [ 
 
-  'nome' => 'required' 
-]);
+   'torneio' => 'required|max:40',  
+   'escalao' => 'required|max:40',  
+   'atleta1' => 'required|max:40',  
+   'atleta2' => 'required|max:40'   
+ ]);
 Grupo::find($id)->update($request->all());
 
 return redirect()->route('grupo.index')

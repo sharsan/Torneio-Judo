@@ -29,111 +29,106 @@
     <div class="form-group col-md-8">   
 
 
-      <!-- juri : --> 
+      <!--  Nome do Torneio : -->  
 
-      <div class="col-md-10"> <br>                                            
-        <label for="juri">Júri : 
-          <input type="text" class="form-control" name="juri"value="{{$grupo->juri}}"></input>
-        </label> 
-      </div>        
+      <div class="col-md-10"> <br> 
+        <label for="torneio"> Nome do Torneio :
+          <select id="torneio" name="torneio">
 
-{{-- 
-            <div class="col-md-10"> <br> 
-                  <label for="nome"> Nome do Torneio :
-                          <select id="nome" name="nome">
-                  
-                          @foreach($torneio as $tor)
-                          <option value="{{$tor->nome}}">{{$tor->nome}} </option>
-                          @endforeach
-                          </select>
-                  </label>    
-                </div>  --}}
+            @foreach($torneio as $tor)
+            <option value="{{$tor->nome}}">{{$tor->nome}} </option>
+            @endforeach
+          </select>
+        </label>    
+      </div>   
 
+      <!-- Escalao  --> 
+      <div class="col-md-10"> <br> 
+        <label for="escalao">Escalão de peso :
+          <select id="escalao" name="escalao">
 
-                <!-- Escalao  --> 
+            @foreach($escalao as $esc)
+            <option value="{{$esc->nome}}">{{$esc->nome}} </option>
+            @endforeach
+          </select>
+        </label>    
+      </div> 
 
-                <div class="col-md-6"> <br>  
-                  <!-- Escalao  --> 
-                  <label for="nome">Escalão de peso :
+      <!-- juri : -->
+      <div class="col-md-10"> <br> 
+        <label for="juri"> Júri :
+          <select id="juri" name="juri">
 
-                    <select name="escalao" id="escalao"> 
-                      <option value="+100">+100</option>
-                      <option value="-100">-100</option>
-                      <option value="-90">-90</option>
-                      <option value="-81">-81</option>
-                      <option value="+78">+78</option>
-                      <option value="-78">-78</option>
-                      <option value="-73">-73</option>
-                      <option value="-70">-70</option>
-                      <option value="-66">-66</option>
-                      <option value="-63">-63</option>
-                      <option value="-60">-60</option>
-                      <option value="-57">-57</option>
-                      <option value="-52">-52</option>
-                      <option value="-48">-48</option>
-                    </select>  
-                  </label>   
-                </div>
-
-{{-- 
-
-            <div class="col-md-10"> <br> 
-                  <label for="escalao">Escalão de peso :
-                          <select id="escalao" name="escalao">
-                  
-                          @foreach($escalao as $esc)
-                          <option value="{{$esc->nome}}">{{$esc->nome}} </option>
-                          @endforeach
-                          </select>
-                  </label>    
-                </div>  --}}
-
-
-                <div class="row"> 
-
-                 <div class="form-group col-md-8">    
-                  <h3>Selecione os atletas</h3>  
-
-                  <!-- Atleta 1 -->
-                  <div class="col-md-8">
-                    <label for="nome"> Atleta 1 :</label> 
-                    <input type="text" class="form-control" name="nome"value="{{$grupo->atleta1}}"> 
-                  </input><br> 
-                </div> 
-                <!-- Atleta 2 -->
-                <div class="col-md-8">
-                  <label for="nome"> Atleta 2 :</label> 
-                  <input type="text" class="form-control" name="nome"value="{{$grupo->atleta2}}"> 
-                </input><br> 
-              </div> 
-              <!-- Atleta 3 -->
-              <div class="col-md-8">
-                <label for="nome"> Atleta 3  :</label> 
-                <input type="text" class="form-control" name="nome"value="{{$grupo->atleta3}}"> 
-              </input><br> 
-            </div> 
-            <!-- Atleta 4 -->
-            <div class="col-md-8">
-              <label for="nome"> Atleta 4 :</label> 
-              <input type="text" class="form-control" name="nome"value="{{$grupo->atleta4}}"> 
-            </input><br> 
-          </div> 
-        </div> 
+            @foreach($arbitro as $arb)
+            <option value="{{$arb->nome}}">{{$arb->nome}} </option>
+            @endforeach
+          </select>
+        </label>    
+      </div> 
 
 
 
-        <!-- Outros detalhes --> 
+      <label> 
+       <a href="{{URL::to('inscrito/create')}}" title=""><h4>+ Adicionar competidor</h4></a>
+     </label>   
+     <div class="col-md-10"> <br> 
+      <label for="atleta1"> Atleta 1 :
+        <select id="atleta1" name="atleta1">
 
-        <div class="form-group col-md-12">
-         <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+          @foreach($inscrito as $insc)
+          <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+          @endforeach
+        </select> 
+      </label>    
+    </div> 
+    <!-- competidor B -->
+    <div class="col-md-10"> 
+      <label for="atleta2"> Atleta 2 :
+       <select id="atleta2" name="atleta2">
 
-          <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
-        </label>
-      </div>
+        @foreach($inscrito as $insc)
+        <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+        @endforeach
+      </select> 
+    </label>
+  </div> 
+  <!-- competidor C -->
+  <div class="col-md-10"> 
+    <label for="atleta3"> Atleta 3 :
+      <select id="atleta3" name="atleta3">
 
-      <div class="form-group col-md-4"> 
-        <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar grupo</button>  
-      </div>
-    </form>
+        @foreach($inscrito as $insc)
+        <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+        @endforeach
+      </select> 
+    </label>
+  </div>
+  <!-- competidor D -->
+  <div class="col-md-10"> 
+    <label for="atleta4"> Atleta 4 :
+      <select id="atleta4" name="atleta4">
 
-    @endsection 
+        @foreach($inscrito as $insc)
+        <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+        @endforeach
+      </select> 
+    </label>
+  </div>
+</div> 
+
+
+<!-- Outros detalhes --> 
+
+<div class="form-group col-md-12">
+ <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+
+  <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
+</label>
+</div>
+
+<div class="form-group col-md-4"> 
+  <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar grupo</button>  
+</div>
+</form>
+
+@endsection 
