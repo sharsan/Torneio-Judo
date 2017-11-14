@@ -16,6 +16,7 @@ class TreinadorController extends Controller
  public function create()
  {   
   $treinador =Treinador::all(); 
+
   $clube =Clube::all();  
 
   return view("treinador.create",['clube'=>$clube]);  
@@ -24,7 +25,9 @@ class TreinadorController extends Controller
 public function edit($id)
 {
  $treinador = Treinador::find($id);
- return view('treinador.edit',compact('treinador','id'));
+
+ $clube =Clube::all(); 
+ return view('treinador.edit',compact('treinador','id','clube'));
 }
 
 public function store(Request $request)
@@ -66,7 +69,7 @@ public function update(Request $request, $id)
  Treinador::find($id)->update($request->all());
  return redirect()->route('treinador.index')
 
- ->with('success','Torneio actualizado com sucesso');  
+ ->with('success','Treinador actualizado com sucesso');  
 }   
 
 public function destroy($id)

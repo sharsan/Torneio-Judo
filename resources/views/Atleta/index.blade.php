@@ -2,17 +2,12 @@
 @section('content')
 <title>Atletas </title>
 <div class="container">
-  <h3><center><th>Atletas</th></center> </h3>
-  <input type="text" maxlength="40" size="50" id="filtro-nome" class="form-control" onkeyup="filtrar(); mostrarLinhas();" placeholder="Pesquise pelo nome"></input>
-
-
-
-  <form method="GET">
-    <input type="text" name="name">
-    <input type="checkbox" name="hasCoffeeMachine" value="1"><span> Apply Filter</span>
-  </form>
+  <h3><center><th>Atletas</th></center> </h3> 
   
-  <table class="table table-striped" id="minhaTabela"> 
+  <input class="form-control" type="text" placeholder="Pesquisar por Nome" onkeyup="filtrar()" id="txtPesk" style="margin-top: 20px; width: 410px; height: 35px">
+  
+  
+  <table class="table table-striped" id="myTable"> 
     <a href="{{URL::to('atleta/create')}}" title=""><h4>Adicionar atleta</h4></a>
     <thead>
       <tr>
@@ -66,4 +61,29 @@
     </tbody>
   </table>
 </div>
+
+<script type="text/javascript">
+
+ function filtrar() {
+
+  var input = document.getElementById("txtPesk");
+  var tabela = document.getElementById("myTable");
+  var linhas = tabela.getElementsByTagName("tr");
+
+  for (var indice = 1; indice < linhas.length; indice++) {
+    var coluna = linhas[indice].getElementsByTagName("td")[1];
+    if (coluna) {
+      if (coluna.innerHTML.toLowerCase().indexOf(input.value.toLowerCase()) > -1) {
+        linhas[indice].style.display = "";
+      } else {
+        linhas[indice].style.display = "none";
+      }
+    }
+  }
+}
+
+
+</script>
 @endsection
+
+

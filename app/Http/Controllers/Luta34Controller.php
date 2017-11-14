@@ -9,6 +9,7 @@ use App\Escalao;
 use App\Grupo;     
 use App\Inscrito;  
 use App\Luta;  
+use App\Luta12;  
 use App\Torneio; 
 
 class Luta34Controller extends Controller
@@ -32,14 +33,16 @@ class Luta34Controller extends Controller
    $luta = Luta::all();
    $torneio = Torneio::all();
 
-   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta'=>$luta,'luta34'=>$luta34, 'torneio'=>$torneio]);
+   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta'=>$luta, 'luta34'=>$luta34, 'torneio'=>$torneio]);
  } 
 
  public function edit($id)
  {
    $luta34 = Luta34::find($id);
+
+   $torneio = Torneio::all();
    
-   return view('luta34.edit', compact('luta34','id')); 
+   return view('luta34.edit', compact('luta34','id', 'torneio')); 
  } 
 
  public function update(Request $request, $id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;  
 use App\Atleta;
+
 use App\Categoria;  
 use App\Clube;     
 use App\Escalao;   
@@ -21,54 +22,62 @@ class AtletaController extends Controller
   public function create()
   {              
    $atleta =Atleta::all();  
+
    $categoria =Categoria::all(); 
    $clube=Clube::all(); 
    $escalao =Escalao::all();
    $treinador =Treinador::all();
+
    return view("atleta.create",['categoria'=>$categoria,'clube'=>$clube,'escalao'=>$escalao,'treinador'=>$treinador]);
  }   
 
  public function edit($id)
  { 
-  $atleta= Atleta::find($id);
-  return view('atleta.edit',compact('atleta','id'));
-} 
+   $atleta= Atleta::find($id);
+   $categoria =Categoria::all(); 
+   $clube=Clube::all(); 
+   $escalao =Escalao::all();
+   $treinador =Treinador::all();
 
-public function update(Request $request, $id)
-{ 
- request()->validate(  
-  [   
-   'nome' => 'required|unique:atletas|min:3,max:40',    
- ]); 
- Atleta::find($id)->update($request->all());
- return redirect()->route('atleta.index')
 
- ->with('success','Atleta actualizado com sucesso'); 
-}
+   return view('atleta.edit',compact('atleta','id','categoria','clube','escalao','treinador'));
+ } 
 
-public function store(Request $request)
-{      
- $existe=$request->get('idade')!="";
+ public function update(Request $request, $id)
+ { 
+   request()->validate(  
+    [   
+     'nome' => 'required|unique:atletas|min:3,max:40',    
+   ]); 
+   Atleta::find($id)->update($request->all());
+   return redirect()->route('atleta.index')
 
- if($existe==true){
-   $this->validate(request(), [
-    'idade'=> 'numeric|min:3|max:90',  
-  ]);
+   ->with('success','Atleta actualizado com sucesso'); 
  }
- else{  
 
-   $this->validate(request(), [
-     'nome' => 'required|unique:atletas|min:3,max:40', 
-   ]);
- }
- Atleta::create($request->all());
- return back()->with('success', 'Atleta adicionado com sucesso');
- 
+ public function store(Request $request)
+ {      
+   $existe=$request->get('idade')!="";
+
+   if($existe==true){
+     $this->validate(request(), [
+      'idade'=> 'numeric|min:3|max:90',  
+    ]);
+   }
+   else{  
+
+     $this->validate(request(), [
+       'nome' => 'required|unique:atletas|min:3,max:40', 
+     ]);
+   }
+   Atleta::create($request->all());
+   return back()->with('success', 'Atleta adicionado com sucesso');
+   
         // return redirect('/atleta');
-}  
+ }  
 
-public function show($id) 
-{ 
+ public function show($id) 
+ { 
   $atleta = Atleta::find($id);
 
   return view('atleta.show',compact('atleta')); 

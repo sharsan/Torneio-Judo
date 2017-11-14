@@ -1,11 +1,15 @@
 @extends('admin')
 @section('content')
 <title>Arbitros </title>
-  <div class="container"> 
+<div class="container"> 
   <h3><center><th>Árbitros</th></center> </h3>
 
-    <table class="table table-striped"> 
-  <a href="{{URL::to('arbitro/create')}}" title=""><h4>Adicionar arbitro</h4></a>
+
+  <input class="form-control" type="text" placeholder="Pesquisar por Nome" onkeyup="filtrar()" id="txtPesk" style="margin-top: 20px; width: 410px; height: 35px">
+  
+
+  <table class="table table-striped" id="myTable"> 
+    <a href="{{URL::to('arbitro/create')}}" title=""><h4>Adicionar arbitro</h4></a>
     <thead>
       <tr>
         <th>ID</th>
@@ -17,7 +21,7 @@
         <th>email</th> 
         <th>Criado em</th>
         <th>Actualizado em</th>
-       <!-- <th colspan="2">Action</th>-->  
+        <!-- <th colspan="2">Action</th>-->  
       </tr>
     </thead>
     <tbody>
@@ -39,12 +43,35 @@
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Apagar</button>
-  
+
           </form>
         </td>
       </tr>
       @endforeach
     </tbody>
   </table>
-  </div>
+</div>
+
+
+<script type="text/javascript">
+
+ function filtrar() {
+
+  var input = document.getElementById("txtPesk");
+  var tabela = document.getElementById("myTable");
+  var linhas = tabela.getElementsByTagName("tr");
+
+  for (var indice = 3; indice < linhas.length; indice++) {
+    var coluna = linhas[indice].getElementsByTagName("td")[1];
+    if (coluna) {
+      if (coluna.innerHTML.toLowerCase().indexOf(input.value.toLowerCase()) > -1) {
+        linhas[indice].style.display = "";
+      } else {
+        linhas[indice].style.display = "none";
+      }
+    }
+  }
+}
+
+</script>
 @endsection

@@ -6,16 +6,18 @@ Route::get('/', function () {
 });
 
 
-Route::get('/atletas'    , 'AtletaController@teste' ); 
+// Route::get('/atletas'    , 'AtletaController@teste' ); 
+// Route::get('/email'    , 'EmailController@index' ); 
 
 Route::resource('arbitro'   , 'ArbitroController'   );
 Route::resource('atleta'    , 'AtletaController'    ); 
 Route::resource('categoria' , 'CategoriaController' ); 
 Route::resource('clube'     , 'ClubeController'     ); 
 Route::resource('competicao', 'CompeticaoController'); 
+Route::resource('email'    , 'EmailController'    ); 
 Route::resource('estado'    , 'EstadoController'    );  
-Route::resource('et', 'EsttController');  
-Route::resource('escalao'   , 'EscalaoController'   ); 
+Route::resource('escalao'   , 'EscalaoController'   );
+Route::resource('et', 'EsttController');   
 Route::resource('faseGr'    , 'FaseGrController'    );  
 Route::resource('finalista' , 'FinalistaController' );  
 Route::resource('inicio'    , 'InicioController'    );  

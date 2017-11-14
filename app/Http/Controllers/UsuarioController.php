@@ -8,36 +8,24 @@ use App\Torneio;
 
 class UsuarioController extends Controller
 {
- public function index()
- {
-     $atleta =Atleta::all(); 
+   public function index()
+   {
+       $atleta =Atleta::all(); 
 
-     return view("usuario.index",compact('atleta'));
-             //return view("usuario/resultados",compact('atleta')); 
- } 
-         // public function index()
-         //     {
-         //     $vencedor =Vencedor::all()->toArray();  
-         //     return view("usuario.resultados",compact('vencedor'));
-         //     } 
+       return view("usuario.index",compact('atleta')); 
+   }  
 
- public function eventos()
- {
-     $torneio = Torneio::all(); 
+   public function eventos()
+   {
+       $torneio = Torneio::all(); 
 
-     return view("usuario.eventos",compact('torneio'));
- } 
+       return view("usuario.eventos",compact('torneio'));
+   } 
 
- public function resultados()
- {
-     $vencedor =Vencedor::all(); 
+   public function resultados()
+   {
+       $luta =Luta::all(); 
 
-     return view("usuario.resultados",compact('vencedor'));
- } 
-         // public function index()
-         //     {
-         //     $treinador =Usuario::all(); 
-
-         //     return view("treinador.index",compact('treinador'));
-         //     }
+       return view("usuario.resultados",compact('luta'));
+   }  
 }

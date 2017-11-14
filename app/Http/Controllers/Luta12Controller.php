@@ -38,8 +38,14 @@ class Luta12Controller extends Controller
  public function edit($id)
  {
    $luta12 = Luta12::find($id);
+   $arbitro =Arbitro::all(); 
+   $atleta =Atleta::all(); 
+   $escalao = Escalao::all();
+   $grupo = Grupo::all();
+   $inscrito = Inscrito::all();
+   $torneio = Torneio::all();
    
-   return view('luta12.edit', compact('luta12','id')); 
+   return view('luta12.edit', compact('luta12','id','arbitro','atleta','escalao','grupo','inscrito','torneio')); 
  } 
 
  public function update(Request $request, $id)

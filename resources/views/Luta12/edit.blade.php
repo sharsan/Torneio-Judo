@@ -2,7 +2,7 @@
 @section('content')
 <title>Editar luta </title>
 <div class="container"> 
-  <h2>Registrar luta</h2><br> 
+  <h2>Editar vencedores do grupo A do escalão</h2><br> 
   <a href="{{URL::to('luta12')}}" title=""><h4><- voltar</h4></a>
   
   @if ($errors->any())
@@ -23,83 +23,137 @@
 
 <form method="post"  action="{{url('luta12')}}">
 
- {{csrf_field()}}   
- <!-- <div class="row">   -->
+
+ <table class="table table-striped">  
+  <thead>   <a href="{{URL::to('luta12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
+
+   <thead>
+    <tr>
+      <th>ID</th> 
+      <th>Escalão</th> 
+      <th>Atleta 1</th>
+      <th>Atleta 2</th> 
+      <th>Júri</th>
+      <th>Vencedor</th> 
+    </tr>
+  </thead>
+  
+  @foreach($luta12 as $post)
+  <tr>
+    <td>{{$post['id']}}</td> 
+    <td>{{$post['escalao']}}</td>
+    <td>{{$post['atleta1']}}</td>
+    <td>{{$post['atleta2']}}</td>
+    <td>{{$post['juri']}}</td>
+    <td>{{$post['vencedor']}}</td>  
+    @endforeach
+  </table>
+
+  {{csrf_field()}}   
+  <!-- <div class="row">   -->
    <div class="row">
     <div class="form-group col-md-8">   
      <!-- Nome do campeonato  -->  
 
-     <div class="col-md-8">
-      <label for="torneio"> Nome do campeonato :</label>
-      <input type="text" class="form-control" name="nome"value="{{$luta12->torneio}}"></input> 
-      
-    </div>  
-<!--       </div>
+     <div class="col-md-10"> <br> 
+      <label for="torneio"> Nome do Torneio :
+        <select id="torneio" name="torneio">
 
-  <div class="form-group col-md-8">  -->
-   <div class="col-md-6"> <br>  
-    <!-- Escalao  --> 
-    <label for="escalao">Escalão de peso :
-
-      <select name="escalao" id="escalao"> 
-        <option value="+100">+100</option>
-        <option value="-100">-100</option>
-        <option value="-90">-90</option>
-        <option value="-81">-81</option>
-        <option value="+78">+78</option>
-        <option value="-78">-78</option>
-        <option value="-73">-73</option>
-        <option value="-70">-70</option>
-        <option value="-66">-66</option>
-        <option value="-63">-63</option>
-        <option value="-60">-60</option>
-        <option value="-57">-57</option>
-        <option value="-52">-52</option>
-        <option value="-48">-48</option>
-      </select>  
-    </label>   
-  </div>
-</div>
-<!-- <div class="form-group row"> -->
-  <div class="form-group col-md-8"> 
-    <div class="col-md-6">                                                <!-- juri : -->
-      <label for="juri">Júri : 
-        <input type="text" class="form-control" name="juri"value="{{$luta12->juri}}"></input>
-      </label>
-    </div>
-  </div> 
-</div> 
-<div class="row"> 
- <div class="form-group col-md-3"> 
-
-  <!-- Nome -->
-  <div class="col-md-12">
-    <label for="primeiro"> 1º lugar:</label>
-    <input type="text" class="form-control" name="primeiro"value="{{$luta12->primeiro}}"></input><br></div>
-    <!-- Nome -->
-    <div class="col-md-12">
-      <label for="segundo"> 2º lugar:</label>
-      <input type="text" class="form-control" name="segundo"value="{{$luta12->segundo}}"></input><br></div>
-      <!-- Nome -->
-      <div class="col-md-12">
-        <label for="terceiro">  3º lugar :</label>
-        <input type="text" class="form-control" name="terceiro"value="{{$luta12->terceiro}}"></input><br></div>
-
-      </div>
+          @foreach($torneio as $tor)
+          <option value="{{$tor->nome}}">{{$tor->nome}} </option>
+          @endforeach
+        </select>
+      </label>    
     </div> 
 
-    <!-- Outros detalhes --> 
+    <!-- Escalao  -->  
+    <div class="col-md-6"> <br>
+     <!-- Escalao  --> 
+     <label for="escalao">Escalão de peso : 
+      <select id="escalao" name="escalao">
 
-    <div class="form-group col-md-12">
-     <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+        @foreach($escalao as $esc)
+        <option value="{{$esc->nome}}">{{$esc->nome}} </option>
+        @endforeach   
+      </select> 
+    </label>  
+  </div> 
+  <!-- juri : -->
+  <div class="col-md-10"> <br> 
+    <label for="juri"> Júri :
+      <select id="juri" name="juri">
 
-      <br> <br><textarea name="descricao" rows="8" cols="80"value="{{$luta12->descricao}}"></textarea> 
+        @foreach($arbitro as $arb)
+        <option value="{{$arb->nome}}">{{$arb->nome}} </option>
+        @endforeach
+      </select>
+    </label>    
+  </div> 
+
+
+  <div class="row"> 
+
+   <div class="form-group col-md-8">    
+     <h3>Selecione os atletas</h3>   
+     <!-- 1º lugar -->
+
+     <div class="col-md-10"> <br> 
+      <label for="atleta1"> Atleta 1:
+        <select id="atleta1" name="atleta1">
+
+          @foreach($grupo as $grp)
+          <option value="{{$grp->atleta1}}">{{$grp->atleta1}} </option>
+          @endforeach
+        </select>
+      </label>    
+    </div> 
+    <!-- 2º lugar -->
+    <div class="col-md-10"> 
+      <label for="atleta2"> Atleta 2:
+       <select id="atleta2" name="atleta2">
+
+        @foreach($grupo as $grp)
+        <option value="{{$grp->atleta2}}">{{$grp->atleta2}} </option>
+        @endforeach
+      </select> 
     </label>
-  </div>
+  </div>  
+  <!-- Vencedor -->
+  <div class="col-md-10"> 
+    <label for="vencedor"> Vencedor:
+     <select id="vencedor" name="vencedor">
 
-  <div class="form-group col-md-4"> 
-    <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar luta</button>  
-  </div>
+      @foreach($inscrito as $insc)
+      <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+      @endforeach
+    </select> 
+  </label>
+</div> 
+<!-- Vencido -->
+<div class="col-md-10"> 
+  <label for="vencido"> Vencido:
+   <select id="vencido" name="vencido">
+
+    @foreach($inscrito as $insc)
+    <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
+    @endforeach
+  </select> 
+</label>
+</div>  
+</div> 
+
+<!-- Outros detalhes --> 
+
+<div class="form-group col-md-12">
+ <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+
+  <br> <br><textarea name="descricao" rows="8" cols="80"value="{{$luta12->descricao}}"></textarea> 
+</label>
+</div>
+
+<div class="form-group col-md-4"> 
+  <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar luta</button>  
+</div>
 </form>
 
 @endsection 
