@@ -41,4 +41,10 @@ class EmailController extends Controller
     {
         //
     }
+
+    public function build()
+    {
+        return $this->from('isaacbadru@gmail.com')
+        ->view('emails.orders.shipped');
+    }
 }

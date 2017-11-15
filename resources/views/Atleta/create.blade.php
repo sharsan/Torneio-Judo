@@ -5,6 +5,8 @@
   <h2>Registrar atleta</h2><br>
   <a href="{{URL::to('atleta')}}" title=""><h4><- voltar</h4></a>   
 
+  <button type="atleta" class="btn btn-success" style="margin-left:38px">voltar</button>
+  
   @if ($errors->any())
   <div class="alert alert-danger">
     <ul>
@@ -153,7 +155,7 @@
 <div class="form-group col-md-12">
   <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
 
-    <br> <br><textarea name="descricao" placeholder=" Ex: Iniciou a carreira aos seus 6anos de vida " rows="8" cols="80"></textarea> 
+    <br> <br><textarea name="descricao" placeholder=" Ex: Melhor recorde pessoal: 1º lugar em 2016... " rows="8" cols="80"></textarea> 
   </label>
 </div>
 

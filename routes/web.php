@@ -15,6 +15,7 @@ Route::resource('categoria' , 'CategoriaController' );
 Route::resource('clube'     , 'ClubeController'     ); 
 Route::resource('competicao', 'CompeticaoController'); 
 Route::resource('email'    , 'EmailController'    ); 
+Route::resource('daw'    , 'DawController'    ); 
 Route::resource('estado'    , 'EstadoController'    );  
 Route::resource('escalao'   , 'EscalaoController'   );
 Route::resource('et', 'EsttController');   
@@ -23,6 +24,7 @@ Route::resource('finalista' , 'FinalistaController' );
 Route::resource('inicio'    , 'InicioController'    );  
 Route::resource('grupo'     , 'GrupoController'     ); 
 Route::resource('inscrito'  , 'InscritoController'  ); 
+Route::resource('mail2'  , 'Mail2Controller'  ); 
 Route::resource('luta'      , 'LutaController'      );
 Route::resource('luta12'    , 'Luta12Controller'    ); 
 Route::resource('luta34'    , 'Luta34Controller'    ); 
@@ -34,6 +36,7 @@ Route::resource('usuario'   , 'UsuarioController'   );
 
 Route::get('/login', 'LoginController@form');
 Route::post('/login', 'LoginController@login');
+Route::post('/send', 'EmailController@send');
 
 Auth::routes();
 

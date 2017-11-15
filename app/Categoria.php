@@ -10,5 +10,5 @@ class Categoria extends Model
 
 	protected $guarded = ['id', 'created_at', 'update_at'];  
 	
-	protected $table = 'categorias';
+	protected $table = 'categorias'; 
 }
