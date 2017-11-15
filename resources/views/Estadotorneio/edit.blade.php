@@ -7,7 +7,7 @@
 
     <h2>Editar estado</h2><br>
 
-    <a href="{{URL::to('estado')}}" title=""><h4><- voltar</h4></a>
+    <a href="{{URL::to('estado')}}" title=""><h4><- voltar</h4></a><br>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -24,32 +24,38 @@
     <p>{{ \Session::get('success') }}</p>
   </div><br>
   @endif
+
+
   <form method="post" action="{{action('EsttController@update', $id)}}">  
     {{csrf_field()}}
     <input name="_method" type="hidden" value="PATCH"> 
 
-    <div class="row">
-      <div class="form-group col-md-2">  
+    <div class="form-group col-md-6"> 
+      <!-- Torneio -->  
 
-        <!-- Estado --> 
-        <label for="estado"> Novo estado :</label>
-        <input type="text" class="form-control" name="estado" placeholder="Ex: Anulado" value="{{$et->estado}}"></input> <br>
-      </div>
+      <div class="col-md-8"> 
+       <label for="torneio"> Nome do Torneio: 
+         <h3> {{$et->torneio}}</h3> 
+       </label>  
+     </div>   
 
-      <div class="form-group col-md-5"> 
 
-        <!-- Torneio --> 
-        <label for="torneio"> Nome do Torneio:</label>
-        <input type="text" class="form-control" name="torneio" placeholder="Ex: Campeonato Inter-provincial" value="{{$et->torneio}}"></input>
-      </div>
+     <!-- Estado -->   
+     <div class="col-md-10">  <br>
+      <label for="estado">Estado: 
+        <select id="estado" name="estado">
+
+          @foreach($estado as $est)
+          <option value="{{$est->nome}}">{{$est->nome}} </option>
+          @endforeach
+        </select>      
+      </label>
     </div>
-
-    <br> <br>
-
-    <div class="form-group col-md-4"> 
-      <button type="submit" class="btn btn-success" style="margin-left:38px">Actualizar</button>   
+    <div class="form-group col-md-6">    
+      <br>  <button type="submit" class="btn btn-success"  style="margin-left:38px">Actualizar</button>   
     </div>
-  </div> 
+  </div>
+</div> 
 </form> 
 </div>
 @endsection  

@@ -32,10 +32,8 @@ class InscritoController extends Controller
    $escalao = Escalao::all();
    $torneio =Torneio::all(); 
    $atleta = Atleta::all();
-   
-   // return view('inscrito.edit', compact('inscrito','id','atleta','escalao','torneio')); 
 
-   return back()->with('success', 'Competidor adicionado com sucesso')-> 
+   return view('inscrito.edit', compact('inscrito','id','atleta','escalao','torneio')); 
  } 
 
  public function update(Request $request, $id)

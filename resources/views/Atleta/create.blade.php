@@ -4,21 +4,21 @@
 <div class="container"> 
   <h2>Registrar atleta</h2><br>
   <a href="{{URL::to('atleta')}}" title=""><h4><- voltar</h4></a>   
+  <style>
 
-  <button type="atleta" class="btn btn-success" style="margin-left:38px">voltar</button>
-  
-  @if ($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-     @foreach ($errors->all() as $error)
-     <li>{{ $error }}</li>
-     @endforeach
-   </ul>
- </div><br>
- @endif
+</style>
+@if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+   @foreach ($errors->all() as $error)
+   <li>{{ $error }}</li>
+   @endforeach
+ </ul>
+</div><br>
+@endif
 
- @if (\Session::has('success'))
- <div class="alert alert-success">
+@if (\Session::has('success'))
+<div class="alert alert-success">
   <p>{{ \Session::get('success') }}</p>
 </div><br>
 @endif

@@ -29,7 +29,9 @@ class EsttController extends Controller
  {
    $et = Estt::find($id);
 
-   return view('estadotorneio.edit', compact('et','id')); 
+   $torneio =Torneio::all();
+   $estado =Estado::all();
+   return view('estadotorneio.edit', compact('et','id','estado','torneio')); 
  }  
 
  public function update(Request $request, $id)

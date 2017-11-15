@@ -8,7 +8,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Atleta</th> 
+        <th>Atleta</th>
         <th>Torneio</th> 
         <th>Escalão</th>  
         <th>Criado em</th>
@@ -19,7 +19,7 @@
       @foreach($inscrito as $post)
       <tr>
         <td>{{$post['id']}}</td>
-        <td>{{$post['atleta']}}</td> 
+        <td>{{$post['atleta']}}</td>
         <td>{{$post['torneio']}}</td> 
         <td>{{$post['escalao']}}</td>  
         <td>{{$post['created_at']}}</td>

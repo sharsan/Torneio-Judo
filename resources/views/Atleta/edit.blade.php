@@ -163,11 +163,9 @@
   <div class="col-md-8">  
     <label for="descricao">Outros detalhes :
 
-      <br><br>    <textarea name="descricao" placeholder=" Ex: Iniciou a carreira aos seus 6anos de vida " rows="8" cols="90">{{$atleta->descricao}}</textarea> </label>  
-      <div class="form-group row"><br>
-        <div class="col-md-2"></div> 
-        <button type="submit" class="btn btn-success" style="margin-left:38px">Actualizar</button> 
-      </div>
-    </form>
-  </div>
-  @endsection
+      <br><br>    <textarea name="descricao" placeholder=" Ex: Iniciou a carreira aos seus 6anos de vida " rows="8" cols="90">{{$atleta->descricao}}</textarea> </label>   
+      <button type="submit" class="btn btn-success" style="margin-left:38px">Actualizar</button> 
+    </div>
+  </form>
+</div>
+@endsection
