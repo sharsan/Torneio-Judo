@@ -5,7 +5,7 @@
  <h3><center><th>Finalistas por escalões</th></center> </h3>
 
  <table class="table table-striped">  
-   <thead>   <a href="{{URL::to('luta')}}" title=""><h4>Ver Finalistas</h4></a>
+   <thead>   <a href="{{URL::to('qlf')}}" title=""><h4>Ver Finalistas</h4></a>
     <thead>
       <thead>   <a href="{{URL::to('finalista/create')}}" title=""><h4> + Registrar final</h4></a>
 

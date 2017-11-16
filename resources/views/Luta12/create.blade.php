@@ -29,6 +29,7 @@
    <thead>
     <tr>
       <th>ID</th> 
+      <th>Torneio</th> 
       <th>Escalão</th> 
       <th>Atleta 1</th>
       <th>Atleta 2</th> 
@@ -40,11 +41,12 @@
   @foreach($luta12 as $post)
   <tr>
     <td>{{$post['id']}}</td> 
+    <td>{{$post['torneio']}}</td>
     <td>{{$post['escalao']}}</td>
     <td>{{$post['atleta1']}}</td>
     <td>{{$post['atleta2']}}</td>
     <td>{{$post['juri']}}</td>
-    <td>{{$post['vencedor']}}</td>  
+    <td>{{$post['vencedor12']}}</td>  
     @endforeach
   </table>
 
@@ -117,10 +119,10 @@
       </select> 
     </label>
   </div>  
-  <!-- Vencedor -->
+  <!-- vencedor12 -->
   <div class="col-md-10"> 
-    <label for="vencedor"> Vencedor:
-     <select id="vencedor" name="vencedor">
+    <label for="vencedor12"> Vencedor:
+     <select id="vencedor12" name="vencedor12">
 
       @foreach($inscrito as $insc)
       <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>

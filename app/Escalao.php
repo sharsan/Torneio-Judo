@@ -10,5 +10,5 @@ class Escalao extends Model
 
 	protected $guarded = ['id', 'created_at', 'update_at'];  
 	
-	protected $table = 'escalaos';
+	protected $table = 'escaloes';
 }

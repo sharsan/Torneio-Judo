@@ -9,6 +9,7 @@
       <tr>
         <th>ID</th>
         <th>Atleta</th> 
+        <th>Sexo</th>
         <th>Torneio</th> 
         <th>Escalão</th>  
         <th>Criado em</th>
@@ -20,6 +21,7 @@
       <tr>
         <td>{{$post['id']}}</td>
         <td>{{$post['atleta']}}</td> 
+        <td>{{$post['sexo']}}</td>
         <td>{{$post['torneio']}}</td> 
         <td>{{$post['escalao']}}</td>  
         <td>{{$post['created_at']}}</td>

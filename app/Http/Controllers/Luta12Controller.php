@@ -8,7 +8,7 @@ use App\Atleta;
 use App\Escalao;   
 use App\Grupo;     
 use App\Inscrito;   
-use App\Luta;  
+use App\Qualificacoes;  
 use App\Torneio; 
 
 class Luta12Controller extends Controller
@@ -29,10 +29,10 @@ class Luta12Controller extends Controller
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
-   $luta = Luta::all();
+   $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
 
-   return view("luta12.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta'=>$luta,'luta12'=>$luta12, 'torneio'=>$torneio]);
+   return view("luta12.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta12'=>$luta12,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]);
  } 
 
  public function edit($id)
@@ -55,7 +55,7 @@ class Luta12Controller extends Controller
       'torneio' => 'required', 
       'atleta1' => 'required', 
       'atleta2' => 'required',  
-      'vencedor' => 'required',
+      'vencedor12' => 'required',
       'vencido' => 'required' 
     ]); 
    Luta12::find($id)->update($request->all());
@@ -71,14 +71,14 @@ class Luta12Controller extends Controller
     'torneio' => 'required', 
     'atleta1' => 'required', 
     'atleta2' => 'required',  
-    'vencedor' => 'required',
+    'vencedor12' => 'required',
     'vencido' => 'required' 
   ]);
    $luta12 = new Luta12([  
     'torneio' => $request->get('torneio'),
     'atleta1' => $request->get('atleta1'),
     'atleta2' => $request->get('atleta2'), 
-    'vencedor' => $request->get('vencedor'),
+    'vencedor12' => $request->get('vencedor12'),
     'vencido' => $request->get('vencido'), 
     'descricao' => $request->get('descricao')
                //campos de exigencia de valores

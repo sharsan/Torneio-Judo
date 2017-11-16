@@ -48,7 +48,7 @@
     <td>{{$post['atleta3']}}</td>
     <td>{{$post['atleta4']}}</td>
     <td>{{$post['juri']}}</td>
-    <td>{{$post['vencedor']}}</td>  
+    <td>{{$post['vencedor34']}}</td>  
     @endforeach
   </table>
 
@@ -123,10 +123,10 @@
       </select> 
     </label>
   </div>  
-  <!-- Vencedor -->
+  <!-- vencedor34 -->
   <div class="col-md-10"> 
-    <label for="vencedor"> Vencedor:
-     <select id="vencedor" name="vencedor">
+    <label for="vencedor34"> Vencedor:
+     <select id="vencedor34" name="vencedor34">
 
       @foreach($inscrito as $insc)
       <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>

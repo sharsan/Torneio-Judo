@@ -32,7 +32,7 @@
       <td>{{$post['atleta3']}}</td>
       <td>{{$post['atleta4']}}</td>
       <td>{{$post['juri']}}</td>
-      <td>{{$post['vencedor']}}</td> 
+      <td>{{$post['vencedor34']}}</td> 
       <td>{{$post['created_at']}}</td>
       <td>{{$post['updated_at']}}</td> 
 

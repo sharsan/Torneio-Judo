@@ -1,7 +1,7 @@
 <?php 
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
-use App\Luta;
+use App\Qualificacoes;
 
 use App\Arbitro;  
 use App\Atleta;   
@@ -13,14 +13,14 @@ use App\Luta34;
 use App\Torneio; 
 use App\Terceiro;  
 
-class LutaController extends Controller
-{
 
+class QualificacoesController extends Controller
+{
   public function index()
   {
 
-   $luta = Luta::all()->toArray();        
-   return view('luta.index', compact('luta'));
+   $qualificacoes = Qualificacoes::all()->toArray();        
+   return view('qualificacoes.index', compact('qualificacoes'));
  } 
 
  public function create()
@@ -36,14 +36,14 @@ class LutaController extends Controller
    $torneio= Torneio::all();
    $terceiro= Terceiro::all();
 
-   return view("luta.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'finalista'=>$finalista,'grupo'=>$grupo,'luta12'=>$luta12,'luta34'=>$luta34,'terceiro'=>$terceiro,'torneio'=>$torneio]); 
+   return view("qualificacoes.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'finalista'=>$finalista,'grupo'=>$grupo,'luta12'=>$luta12,'luta34'=>$luta34,'terceiro'=>$terceiro,'torneio'=>$torneio]); 
  } 
 
  public function edit($id)
  {
-   $luta = Luta::find($id);
-   
-   return view('luta.edit', compact('luta','id')); 
+   $qualificacoes = Qualificacoes::find($id);
+
+   return view('qualificacoes.edit', compact('qualificacoes','id')); 
  } 
 
  public function update(Request $request, $id)
@@ -54,37 +54,37 @@ class LutaController extends Controller
       'primeiro' => 'required',
       'segundo' => 'required' , 
     ]); 
-   Luta::find($id)->update($request->all());
-   return redirect()->route('luta.index')
+   Qualificacoes::find($id)->update($request->all());
+   return redirect()->route('qualificacoes.index')
 
-   ->with('success','Luta actualizada com sucesso');  
+   ->with('success','Qualificados actualizados com sucesso');  
  }  
 
  public function store(Request $request)
  {      
    $this->validate(request(), [
-        // 'nome' => 'required|unique:lutas|max:40',
+        // 'nome' => 'required|unique:qualificacoess|max:40',
     'torneio' => 'required',
     'primeiro' => 'required',
     'segundo' => 'required' 
   ]);
-   $luta = new Luta([
+   $qualificacoes = new Qualificacoes([
     'torneio' => $request->get('torneio'),
     'primeiro' => $request->get('primeiro'),
     'segundo' => $request->get('segundo'),
     'descricao' => $request->get('descricao')
                //campos de exigencia de valores
   ]);
-   Luta::create($request->all());
-   return back()->with('success', 'Lutas adicionadas com sucesso'); 
-   
+   Qualificacoes::create($request->all());
+   return back()->with('success', 'Qualificados adicionados com sucesso'); 
+
  }
 
  public function destroy($id)
  {
-   $luta = Luta::find($id);
-   $luta->delete();
+   $qualificacoes = Qualificacoes::find($id);
+   $qualificacoes->delete();
 
-   return redirect('/luta');
+   return redirect('/qualificacoes');
  }  
 }
