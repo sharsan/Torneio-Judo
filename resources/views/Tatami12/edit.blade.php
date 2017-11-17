@@ -3,7 +3,7 @@
 <title>Editar luta </title>
 <div class="container"> 
   <h2>Editar vencedores do grupo B do escalão</h2><br> 
-  <a href="{{URL::to('luta34')}}" title=""><h4><- voltar</h4></a>
+  <a href="{{URL::to('tatami12')}}" title=""><h4><- voltar</h4></a>
   
   @if ($errors->any())
   <div class="alert alert-danger">
@@ -21,8 +21,8 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('luta34')}}"> 
- <a href="{{URL::to('luta34/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
+<form method="post"  action="{{url('tatami12')}}"> 
+ <a href="{{URL::to('tatami12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
 
  <table class="table table-striped">  
   <thead>   
@@ -43,9 +43,9 @@
       <tr>
         <td>{{$post['id']}}</td> 
         <td>{{$post['torneio']}}</td>
-        <td>{{$post['atleta3']}}</td>
+        <td>{{$post['atleta1']}}</td>
         <td>{{$post['escalao']}}</td>
-        <td>{{$post['atleta4']}}</td> 
+        <td>{{$post['atleta2']}}</td> 
         <td>{{$post['sexo']}}</td>
         @endforeach
       </tbody> 
@@ -102,22 +102,22 @@
      <!-- 1º lugar -->
 
      <div class="col-md-10"> <br> 
-      <label for="atleta3"> Atleta 1:
-        <select id="atleta3" name="atleta3">
+      <label for="atleta1"> Atleta 1:
+        <select id="atleta1" name="atleta1">
 
           @foreach($grupo as $grp)
-          <option value="{{$grp->atleta3}}">{{$grp->atleta3}} </option>
+          <option value="{{$grp->atleta1}}">{{$grp->atleta1}} </option>
           @endforeach
         </select>
       </label>    
     </div> 
     <!-- 2º lugar -->
     <div class="col-md-10"> 
-      <label for="atleta4"> Atleta 2:
-       <select id="atleta4" name="atleta4">
+      <label for="atleta2"> Atleta 2:
+       <select id="atleta2" name="atleta2">
 
         @foreach($grupo as $grp)
-        <option value="{{$grp->atleta4}}">{{$grp->atleta4}} </option>
+        <option value="{{$grp->atleta2}}">{{$grp->atleta2}} </option>
         @endforeach
       </select> 
     </label>
@@ -151,7 +151,7 @@
 <div class="form-group col-md-12">
  <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
 
-  <br> <br><textarea name="descricao" rows="8" cols="80"value="{{$luta34->descricao}}"></textarea> 
+  <br> <br><textarea name="descricao" rows="8" cols="80"value="{{$tatami12->descricao}}"></textarea> 
 </label>
 </div>
 

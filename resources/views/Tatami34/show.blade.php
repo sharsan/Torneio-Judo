@@ -5,7 +5,7 @@
   <h2>Registrar luta</h2><br>
   
   <div class="container">
-    <a href="{{URL::to('luta12')}}" title=""><h4><- voltar</h4></a>
+    <a href="{{URL::to('Tatami34')}}" title=""><h4><- voltar</h4></a>
     
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -23,7 +23,7 @@
   </div><br>
   @endif
 
-  <form method="post"  action="{{url('luta12')}}">
+  <form method="post"  action="{{url('Tatami34')}}">
     <div class="form-group row">
      {{csrf_field()}}     
      

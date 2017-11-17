@@ -5,7 +5,7 @@
   <h2>Registrar final</h2><br>
   
   <div class="container">
-    <a href="{{URL::to('final')}}" title=""><h4><- voltar</h4></a>
+    <a href="{{URL::to('finalista')}}" title=""><h4><- voltar</h4></a>
     
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -23,7 +23,7 @@
   </div><br>
   @endif
 
-  <form method="post"  action="{{url('Final')}}">
+  <form method="post"  action="{{url('finalista')}}">
     <div class="form-group row">
      {{csrf_field()}}     
      

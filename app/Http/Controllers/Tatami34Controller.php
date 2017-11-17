@@ -1,7 +1,7 @@
 <?php 
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
-use App\Luta34;  
+use App\Tatami34;  
 
 use App\Arbitro;  
 use App\Atleta;    
@@ -11,20 +11,20 @@ use App\Inscrito;
 use App\Qualificacoes;  
 use App\Torneio; 
 
-class Luta34Controller extends Controller
+class Tatami34Controller extends Controller
 {
 
   public function index()
   {
-   $luta34 = Luta34::all()->toArray();    
+   $tatami34 = Tatami34::all()->toArray();    
    
    $grupo = Grupo::all();         
-   return view('luta34.index', compact('luta34','grupo'));
- } 
+   return view('tatami34.index', compact('tatami34','grupo'));
+} 
 
- public function create()
- {     
-   $luta34 = Luta34::all();
+public function create()
+{     
+   $tatami34 = Tatami34::all();
 
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
@@ -34,12 +34,12 @@ class Luta34Controller extends Controller
    $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
 
-   return view("luta34.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta34'=>$luta34,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]); 
- } 
+   return view("tatami34.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'tatami34'=>$tatami34,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]); 
+} 
 
- public function edit($id)
- {
-   $luta34 = Luta34::find($id);
+public function edit($id)
+{
+   $tatami34 = Tatami34::find($id);
 
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
@@ -49,10 +49,10 @@ class Luta34Controller extends Controller
    $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
    
-   return view('luta34.edit', compact('luta34','id','arbitro','atleta','escalao','grupo','inscrito','qualificacoes','torneio'));
- }
- public function update(Request $request, $id)
- {      
+   return view('tatami34.edit', compact('tatami34','id','arbitro','atleta','escalao','grupo','inscrito','qualificacoes','torneio'));
+}
+public function update(Request $request, $id)
+{      
    request()->validate(  
     [    
       'torneio' => 'required', 
@@ -60,15 +60,15 @@ class Luta34Controller extends Controller
       'atleta4' => 'required',  
       'vencedor34' => 'required',
       'vencido' => 'required' 
-    ]); 
-   Luta34::find($id)->update($request->all());
-   return redirect()->route('luta34.index')
+  ]); 
+   Tatami34::find($id)->update($request->all());
+   return redirect()->route('tatami34.index')
 
    ->with('success','Luta actualizada com sucesso');  
- }  
+}  
 
- public function store(Request $request)
- {      
+public function store(Request $request)
+{      
    $this->validate(request(), [
         // 'nome' => 'required|unique:lutas|max:40', 
     'torneio' => 'required', 
@@ -76,8 +76,8 @@ class Luta34Controller extends Controller
     'atleta4' => 'required',  
     'vencedor34' => 'required',
     'vencido' => 'required' 
-  ]);
-   $luta34 = new Luta34([  
+]);
+   $tatami34 = new Tatami34([  
     'torneio' => $request->get('torneio'),
     'atleta3' => $request->get('atleta3'),
     'atleta4' => $request->get('atleta4'), 
@@ -85,17 +85,17 @@ class Luta34Controller extends Controller
     'vencido' => $request->get('vencido'), 
     'descricao' => $request->get('descricao')
                //campos de exigencia de valores
-  ]);
-   Luta34::create($request->all());
+]);
+   Tatami34::create($request->all());
    return back()->with('success', 'Luta adicionada com sucesso'); 
 
- }
+}
 
- public function destroy($id)
- {
-   $luta34 = Luta34::find($id);
-   $luta34->delete();
+public function destroy($id)
+{
+   $tatami34 = Tatami34::find($id);
+   $tatami34->delete();
 
-   return redirect('/luta34');
- }  
+   return redirect('/tatami34');
+}  
 }

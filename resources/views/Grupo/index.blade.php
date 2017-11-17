@@ -21,8 +21,8 @@
 
         <div class="form-group col-md-4"> <br>
          <a href="{{URL::to('grupo/create')}}" title=""><h4> Adicionar grupo</h4></a> 
-         <a href="{{URL::to('luta12')}}" title=""><h4> Ver grupo A</h4></a>  
-         <a href="{{URL::to('luta34')}}" title=""><h4> Ver grupo B</h4></a> 
+         <a href="{{URL::to('tatami12')}}" title=""><h4> Ver grupo A</h4></a>  
+         <a href="{{URL::to('tatami34')}}" title=""><h4> Ver grupo B</h4></a> 
          
          <thead>
           <tr>

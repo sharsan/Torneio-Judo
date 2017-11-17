@@ -37,7 +37,7 @@
     </tr>
   </thead>
   
-  @foreach($luta12 as $post)
+  @foreach($tatami12 as $post)
   <tr>
     <td>{{$post['id']}}</td> 
     <td>{{$post['torneio']}}</td>
@@ -60,7 +60,7 @@
       </tr>
     </thead>
 
-    @foreach($luta34 as $post)
+    @foreach($tatami34 as $post)
     <tr>
       <td>{{$post['id']}}</td> 
       <td>{{$post['torneio']}}</td>
@@ -122,8 +122,8 @@
           <label for="vencedor12"> Atleta 1:
             <select id="vencedor12" name="vencedor12">
 
-              @foreach($luta12 as $l12)
-              <option value="{{$l12->vencido}}">{{$l12->vencido}} </option>
+              @foreach($tatami12 as $ttm12)
+              <option value="{{$ttm12->vencido}}">{{$ttm12->vencido}} </option>
               @endforeach
             </select>
           </label>    
@@ -133,8 +133,8 @@
           <label for="vencedor34"> Atleta 2:
            <select id="vencedor34" name="vencedor34">
 
-            @foreach($luta34 as $l34)
-            <option value="{{$l34->vencido}}">{{$l34->vencido}} </option>
+            @foreach($tatami34 as $ttm34)
+            <option value="{{$ttm34->vencido}}">{{$ttm34->vencido}} </option>
             @endforeach
           </select> 
         </label>

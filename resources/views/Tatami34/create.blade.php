@@ -3,7 +3,7 @@
 <title>Adicionar vencedores do grupo B</title>
 <div class="container"> 
   <h2>Registrar vencedores do grupo B do escalão</h2><br> 
-  <a href="{{URL::to('luta34')}}" title=""><h4><- voltar</h4></a>
+  <a href="{{URL::to('tatami12')}}" title=""><h4>Resultados do grupo B</h4></a>  
   
   @if ($errors->any())
   <div class="alert alert-danger">
@@ -22,7 +22,7 @@
 @endif
 
 
-<form method="post"  action="{{url('luta34')}}"> 
+<form method="post"  action="{{url('tatami12')}}"> 
 
   {{csrf_field()}}   
   <!-- <div class="row">   -->
@@ -162,7 +162,7 @@
   </tr>
 </thead>
 
-@foreach($luta34 as $post)
+@foreach($tatami12 as $post)
 <tr>
   <td>{{$post['id']}}</td> 
   <td>{{$post['torneio']}}</td>

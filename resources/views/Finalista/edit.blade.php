@@ -65,7 +65,7 @@
       </tr>
     </thead>
 
-    @foreach($luta34 as $post)
+    @foreach($tatami34 as $post)
     <tr>
       <td>{{$post['id']}}</td> 
       <td>{{$post['torneio']}}</td>
@@ -144,8 +144,8 @@
           <label for="vencedor34"> Atleta 2:
            <select id="vencedor34" name="vencedor34">
 
-            @foreach($luta34 as $luta)
-            <option value="{{$luta->vencedor34}}">{{$luta->vencedor34}} </option>
+            @foreach($tatami34 as $ttm34)
+            <option value="{{$ttm34->vencedor34}}">{{$ttm34->vencedor34}} </option>
             @endforeach
           </select> 
         </label>

@@ -38,7 +38,7 @@
     </tr>
   </thead>
 
-  @foreach($luta12 as $post)
+  @foreach($tatami12 as $post)
   <tr>
     <td>{{$post['id']}}</td> 
     <td>{{$post['torneio']}}</td>
@@ -64,7 +64,7 @@
       </tr>
     </thead>
 
-    @foreach($luta34 as $post)
+    @foreach($tatami34 as $post)
     <tr>
       <td>{{$post['id']}}</td> 
       <td>{{$post['torneio']}}</td>
@@ -128,8 +128,8 @@
             <label for="vencedor12">1º do grupo A:
               <select id="vencedor12" name="vencedor12">
 
-                @foreach($luta12 as $luta)
-                <option value="{{$luta->vencedor12}}">{{$luta->vencedor12}} </option>
+                @foreach($tatami12 as $ttm12)
+                <option value="{{$ttm12->vencedor12}}">{{$ttm12->vencedor12}} </option>
                 @endforeach
               </select>
             </label>      <b>  VS  </b>
@@ -137,8 +137,8 @@
             <label for="vencedor34">1º do grupo B:
              <select id="vencedor34" name="vencedor34">
 
-              @foreach($luta34 as $luta)
-              <option value="{{$luta->vencedor34}}">{{$luta->vencedor34}} </option>
+              @foreach($tatami34 as $ttm34)
+              <option value="{{$ttm34->vencedor34}}">{{$ttm34->vencedor34}} </option>
               @endforeach
             </select> 
           </label>

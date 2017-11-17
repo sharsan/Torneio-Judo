@@ -10,8 +10,8 @@ use App\Atleta;
 use App\Escalao;  
 use App\Grupo;  
 use App\Inscrito;  
-use App\Luta12;  
-use App\Luta34;  
+use App\Tatami12;  
+use App\Tatami34;  
 use App\Torneio;  
 
 class FinalistaController extends Controller
@@ -31,12 +31,12 @@ class FinalistaController extends Controller
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
-   $luta12 = Luta12::all();
-   $luta34 = Luta34::all();
+   $tatami12 = Tatami12::all();
+   $tatami34 = Tatami34::all();
    $torneio= Torneio::all();
 
 
-   return view("finalista.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'grupo'=>$grupo,'inscrito'=>$inscrito,'luta12'=>$luta12,'luta34'=>$luta34,'torneio'=>$torneio]);
+   return view("finalista.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'grupo'=>$grupo,'inscrito'=>$inscrito,'tatami12'=>$tatami12,'tatami34'=>$tatami34,'torneio'=>$torneio]);
  }  
 
  public function edit($id)
@@ -48,11 +48,11 @@ class FinalistaController extends Controller
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
-   $luta12 = Luta12::all();
-   $luta34 = Luta34::all();
+   $tatami12 = Tatami12::all();
+   $tatami34 = Tatami34::all();
    $torneio= Torneio::all();
 
-   return view('finalista.edit',compact('finalista','id','arbitro','atleta','escalao','grupo','inscrito','luta12','luta34','torneio'));
+   return view('finalista.edit',compact('finalista','id','arbitro','atleta','escalao','grupo','inscrito','tatami12','tatami34','torneio'));
  }  
 
  public function store(Request $request)
