@@ -34,19 +34,23 @@ class Luta34Controller extends Controller
    $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
 
-   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta34'=>$luta34,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]); 
-   
+   return view("luta34.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta34'=>$luta34,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]); 
  } 
 
  public function edit($id)
  {
    $luta34 = Luta34::find($id);
 
+   $arbitro =Arbitro::all(); 
+   $atleta =Atleta::all(); 
+   $escalao = Escalao::all();
+   $grupo = Grupo::all();
+   $inscrito = Inscrito::all();
+   $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
    
-   return view('luta34.edit', compact('luta34','id', 'torneio')); 
- } 
-
+   return view('luta34.edit', compact('luta34','id','arbitro','atleta','escalao','grupo','inscrito','qualificacoes','torneio'));
+ }
  public function update(Request $request, $id)
  {      
    request()->validate(  
@@ -84,7 +88,7 @@ class Luta34Controller extends Controller
   ]);
    Luta34::create($request->all());
    return back()->with('success', 'Luta adicionada com sucesso'); 
-   
+
  }
 
  public function destroy($id)

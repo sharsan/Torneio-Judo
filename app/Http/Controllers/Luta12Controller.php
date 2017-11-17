@@ -40,6 +40,7 @@ class Luta12Controller extends Controller
  public function edit($id)
  {
    $luta12 = Luta12::find($id);
+   
    $arbitro =Arbitro::all(); 
    $atleta =Atleta::all(); 
    $escalao = Escalao::all();

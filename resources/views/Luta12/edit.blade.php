@@ -2,7 +2,7 @@
 @section('content')
 <title>Editar luta </title>
 <div class="container"> 
-  <h2>Editar vencedores do grupo A do escalão</h2><br> 
+  <h2>Editar vencedores do grupo B do escalão</h2><br> 
   <a href="{{URL::to('luta12')}}" title=""><h4><- voltar</h4></a>
   
   @if ($errors->any())
@@ -21,32 +21,35 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('luta12')}}">
-
+<form method="post"  action="{{url('luta12')}}"> 
+ <a href="{{URL::to('luta12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
 
  <table class="table table-striped">  
-  <thead>   <a href="{{URL::to('luta12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
+  <thead>   
 
-   <thead>
-    <tr>
-      <th>ID</th> 
-      <th>Escalão</th> 
-      <th>Atleta 1</th>
-      <th>Atleta 2</th> 
-      <th>Júri</th>
-      <th>Vencedor</th> 
-    </tr>
-  </thead>
-  
-  @foreach($luta12 as $post)
-  <tr>
-    <td>{{$post['id']}}</td> 
-    <td>{{$post['escalao']}}</td>
-    <td>{{$post['atleta1']}}</td>
-    <td>{{$post['atleta2']}}</td>
-    <td>{{$post['juri']}}</td>
-    <td>{{$post['vencedor']}}</td>  
-    @endforeach
+    <center><h3> Competidores do grupo B</h3>  </center>
+    <thead>
+      <tr>
+        <th>ID</th> 
+        <th>Torneio</th> 
+        <th>Atleta 1</th>
+        <th>Escalão</th> 
+        <th>Atleta 2</th> 
+        <th>Sexo</th>  
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($grupo as $post)
+      <tr>
+        <td>{{$post['id']}}</td> 
+        <td>{{$post['torneio']}}</td>
+        <td>{{$post['atleta1']}}</td>
+        <td>{{$post['escalao']}}</td>
+        <td>{{$post['atleta2']}}</td> 
+        <td>{{$post['sexo']}}</td>
+        @endforeach
+      </tbody> 
+    </table>
   </table>
 
   {{csrf_field()}}   
@@ -55,6 +58,7 @@
     <div class="form-group col-md-8">   
      <!-- Nome do campeonato  -->  
 
+     <h2>Editar vencedores </h2>  
      <div class="col-md-10"> <br> 
       <label for="torneio"> Nome do Torneio :
         <select id="torneio" name="torneio">
