@@ -32,7 +32,7 @@ class Luta12Controller extends Controller
    $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
 
-   return view("luta12.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta12'=>$luta12,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]);
+   return view("luta12.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta12'=>$luta12,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]);
  } 
 
  public function edit($id)
@@ -43,9 +43,10 @@ class Luta12Controller extends Controller
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
+   $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
    
-   return view('luta12.edit', compact('luta12','id','arbitro','atleta','escalao','grupo','inscrito','torneio')); 
+   return view('luta12.edit', compact('luta12','id','arbitro','atleta','escalao','grupo','inscrito','qualificacoes','torneio')); 
  } 
 
  public function update(Request $request, $id)

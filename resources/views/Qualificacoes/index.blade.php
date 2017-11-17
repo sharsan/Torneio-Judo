@@ -6,7 +6,7 @@
 
  <a href="{{URL::to('grupo')}}" title=""><h4><- Fase de grupos</h4></a>
  <table class="table table-striped">  
-  <thead>   <a href="{{URL::to('qualificacoes/create')}}" title=""><h4>+ adicionar finalistas</h4></a>
+  <thead>   <a href="{{URL::to('finalista/create')}}" title=""><h4>+ adicionar finalistas</h4></a>
 
 
    <thead>

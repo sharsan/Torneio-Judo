@@ -32,7 +32,8 @@ class Luta34Controller extends Controller
    $qualificacoes = Qualificacoes::all();
    $torneio = Torneio::all();
 
-   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'qualificacoes'=>$qualificacoes, 'luta34'=>$luta34, 'torneio'=>$torneio]);
+   return view("luta34.create",['atleta'=>$atleta,'arbitro'=>$arbitro,'escalao'=>$escalao,'inscrito'=>$inscrito,'grupo'=>$grupo,'luta34'=>$luta34,'qualificacoes'=>$qualificacoes, 'torneio'=>$torneio]); 
+   
  } 
 
  public function edit($id)

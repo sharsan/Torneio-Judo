@@ -29,39 +29,39 @@
     <input name="_method" type="hidden" value="PATCH"> 
 
     <div class="row">
-      <div class="form-group col-md-2">  
+      
+      <!-- Nome do Torneio -->
+      <div class="col-md-12"> 
+        <br>
+        <label for="torneio"> Torneio:  
+          <select id="torneio" name="torneio">
 
-        <!-- Estado --> 
-        <label for="estado"> Novo estado :</label>
-        <input type="text" class="form-control" name="estado" placeholder="Ex: Anulado" value="{{$et->estado}}"></input> <br>
+            @foreach($torneio as $trn)
+            <option value="{{$trn->nome}}">{{$trn->nome}} </option>
+            @endforeach
+          </select>
+        </label>   
+      </div> 
+
+
+      <!-- Estado -->
+      <div class="col-md-12"> 
+        <br>
+        <label for="estado"> Estado:  
+          <select id="estado" name="estado">
+
+            @foreach($estado as $est)
+            <option value="{{$est->nome}}">{{$est->nome}} </option>
+            @endforeach
+          </select>
+        </label>   
+      </div> 
+
+      <div class="form-group col-md-4"> 
+        <br> 
+        <button type="submit" class="btn btn-success" style="margin-left:38px">Actualizar</button>   
       </div>
-
-      <div class="form-group col-md-5"> 
-
-
-   {{--  <div class="form-group col-md-6"> 
-      <!-- Torneio -->  
-
-      <div class="col-md-8"> 
-       <label for="torneio"> Nome do Torneio:<h3> {{$et->torneio}}</h3> 
-        <select id="torneio" name="torneio">
-          <option value="{{$et->torneio}}">{{$et->torneio}} </option>
-        </select>  
-      </label>  
-    </div>    --}}
-
-    <!-- Torneio --> 
-    <label for="torneio"> Nome do Torneio:</label>
-    <input type="text" class="form-control" name="torneio" placeholder="Ex: Campeonato Inter-provincial" value="{{$et->torneio}}"></input>
-  </div>
-</div>
-
-<br> <br>
-
-<div class="form-group col-md-4"> 
-  <button type="submit" class="btn btn-success" style="margin-left:38px">Actualizar</button>   
-</div>
-</div> 
-</form> 
+    </div> 
+  </form> 
 </div>
 @endsection  

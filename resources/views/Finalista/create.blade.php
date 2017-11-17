@@ -23,7 +23,7 @@
 
 <form method="post"  action="{{url('finalista')}}">
 
-
+  {{-- Grupo A --}}
 
   <h3>Grupo A</h3><br> 
 
@@ -44,12 +44,15 @@
     <td>{{$post['id']}}</td> 
     <td>{{$post['torneio']}}</td>
     <td>{{$post['escalao']}}</td>
-    <td>{{$post['vencedor']}}</td> 
+    <td>{{$post['vencedor12']}}</td> 
     <td>{{$post['juri']}}</td>   
     @endforeach
   </table>
 
+  {{-- Grupo B --}}
+  
   <h3>Grupo B</h3><br>
+
   <table class="table table-striped">   
 
     <thead>
@@ -67,7 +70,7 @@
       <td>{{$post['id']}}</td> 
       <td>{{$post['torneio']}}</td>
       <td>{{$post['escalao']}}</td>
-      <td>{{$post['vencedor']}}</td> 
+      <td>{{$post['vencedor34']}}</td> 
       <td>{{$post['juri']}}</td>   
       @endforeach
     </table>
@@ -113,6 +116,8 @@
         </label>    
       </div> 
 
+      {{-- Selecione os finalistas --}}
+
 
       <div class="row"> 
 
@@ -125,7 +130,7 @@
             <select id="vencedor12" name="vencedor12">
 
               @foreach($luta12 as $luta)
-              <option value="{{$luta->vencedor}}">{{$luta->vencedor}} </option>
+              <option value="{{$luta->vencedor12}}">{{$luta->vencedor12}} </option>
               @endforeach
             </select>
           </label>    
@@ -136,7 +141,7 @@
            <select id="vencedor34" name="vencedor34">
 
             @foreach($luta34 as $luta)
-            <option value="{{$luta->vencedor}}">{{$luta->vencedor}} </option>
+            <option value="{{$luta->vencedor34}}">{{$luta->vencedor34}} </option>
             @endforeach
           </select> 
         </label>
@@ -147,7 +152,7 @@
          <select id="primeiro" name="primeiro">
 
           @foreach($luta12 as $l12)
-          <option value="{{$l12->vencedor}}">{{$l12->vencedor}} </option>
+          <option value="{{$l12->vencedor12}}">{{$l12->vencedor12}} </option>
           @endforeach
         </select> 
       </label>

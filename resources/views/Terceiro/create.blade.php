@@ -4,7 +4,7 @@
 <div class="container"> 
   <h2>Registrar final do 3º e 4º lugar</h2><br> 
   <a href="{{URL::to('finalista')}}" title=""><h4><- voltar</h4></a>
-  <a href="{{URL::to('luta')}}" title=""><h4>Ver finais</h4></a>
+  <a href="{{URL::to('qlf')}}" title=""><h4>Ver finais</h4></a>
   
   @if ($errors->any())
   <div class="alert alert-danger">
@@ -122,8 +122,8 @@
           <label for="vencedor12"> Atleta 1:
             <select id="vencedor12" name="vencedor12">
 
-              @foreach($luta12 as $luta)
-              <option value="{{$luta->vencido}}">{{$luta->vencido}} </option>
+              @foreach($luta12 as $l12)
+              <option value="{{$l12->vencido}}">{{$l12->vencido}} </option>
               @endforeach
             </select>
           </label>    
@@ -133,8 +133,8 @@
           <label for="vencedor34"> Atleta 2:
            <select id="vencedor34" name="vencedor34">
 
-            @foreach($luta34 as $luta)
-            <option value="{{$luta->vencido}}">{{$luta->vencido}} </option>
+            @foreach($luta34 as $l34)
+            <option value="{{$l34->vencido}}">{{$l34->vencido}} </option>
             @endforeach
           </select> 
         </label>

@@ -24,9 +24,10 @@ class FinalistaController extends Controller
 
  public function create()
  {              
+   $finalista = Finalista::all();
+
    $atleta =Atleta::all(); 
    $arbitro =Arbitro::all(); 
-   $finalista = Finalista::all();
    $escalao = Escalao::all();
    $grupo = Grupo::all();
    $inscrito = Inscrito::all();
@@ -40,8 +41,18 @@ class FinalistaController extends Controller
 
  public function edit($id)
  {
-   $finalista = Finalista::find($id);
-   return view('finalista.edit',compact('finalista','id'));
+   $finalista = Finalista::all();
+   
+   $atleta =Atleta::all(); 
+   $arbitro =Arbitro::all(); 
+   $escalao = Escalao::all();
+   $grupo = Grupo::all();
+   $inscrito = Inscrito::all();
+   $luta12 = Luta12::all();
+   $luta34 = Luta34::all();
+   $torneio= Torneio::all();
+
+   return view('finalista.edit',compact('finalista','id','arbitro','atleta','escalao','grupo','inscrito','luta12','luta34','torneio'));
  }  
 
  public function store(Request $request)

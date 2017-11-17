@@ -42,8 +42,19 @@ class QualificacoesController extends Controller
  public function edit($id)
  {
    $qualificacoes = Qualificacoes::find($id);
+   
+   $arbitro =Arbitro::all();
+   $atleta =Atleta::all();
+   $escalao = Escalao::all();
+   $finalista = Finalista::all();
+   $grupo = Grupo::all();
+   $luta12 = Luta34::all();
+   $luta34 = Luta34::all();
+   $torneio= Torneio::all();
+   $terceiro= Terceiro::all();
 
-   return view('qualificacoes.edit', compact('qualificacoes','id')); 
+
+   return view('qualificacoes.edit', compact('qualificacoes','id','arbitro','atleta','escalao','finalista','grupo','luta12','luta34','terceiro','torneio')); 
  } 
 
  public function update(Request $request, $id)
