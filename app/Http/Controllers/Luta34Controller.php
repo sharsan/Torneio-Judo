@@ -16,8 +16,10 @@ class Luta34Controller extends Controller
 
   public function index()
   {
-   $luta34 = Luta34::all()->toArray();        
-   return view('luta34.index', compact('luta34'));
+   $luta34 = Luta34::all()->toArray();    
+   
+   $grupo = Grupo::all();         
+   return view('luta34.index', compact('luta34','grupo'));
  } 
 
  public function create()

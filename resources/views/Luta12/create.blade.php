@@ -21,34 +21,8 @@
 </div><br>
 @endif
 
+
 <form method="post"  action="{{url('luta12')}}"> 
-
- <table class="table table-striped">  
-  <thead>   <a href="{{URL::to('luta12/create')}}" title=""><h4>+ Registrar outro vencedor de luta</h4></a>   
-
-   <thead>
-    <tr>
-      <th>ID</th> 
-      <th>Torneio</th> 
-      <th>Escalão</th> 
-      <th>Atleta 1</th>
-      <th>Atleta 2</th> 
-      <th>Júri</th>
-      <th>Vencedor</th> 
-    </tr>
-  </thead>
-  
-  @foreach($luta12 as $post)
-  <tr>
-    <td>{{$post['id']}}</td> 
-    <td>{{$post['torneio']}}</td>
-    <td>{{$post['escalao']}}</td>
-    <td>{{$post['atleta1']}}</td>
-    <td>{{$post['atleta2']}}</td>
-    <td>{{$post['juri']}}</td>
-    <td>{{$post['vencedor12']}}</td>  
-    @endforeach
-  </table>
 
   {{csrf_field()}}   
   <!-- <div class="row">   -->
@@ -79,8 +53,10 @@
       </select> 
     </label>  
   </div> 
+
+
   <!-- juri : -->
-  <div class="col-md-10"> <br> 
+  <div class="col-md-8"> <br> 
     <label for="juri"> Júri :
       <select id="juri" name="juri">
 
@@ -90,6 +66,17 @@
       </select>
     </label>    
   </div> 
+
+  {{-- Sexo --}}
+
+  <div class="col-md-5">  <br> 
+    <label for="sexo">Sexo :
+      <input type="radio" class="form-check-input" name="sexo" value="M" checked></input> 
+      M
+      <input class="form-check-input" type="radio" name="sexo" id="F" value="F"></input> 
+      F
+    </label> 
+  </div>
 
 
   <div class="row"> 
@@ -106,10 +93,9 @@
           <option value="{{$grp->atleta1}}">{{$grp->atleta1}} </option>
           @endforeach
         </select>
-      </label>    
-    </div> 
-    <!-- 2º lugar -->
-    <div class="col-md-10"> 
+      </label>       <b>  VS  </b>
+
+      <!-- 2º lugar --> 
       <label for="atleta2"> Atleta 2:
        <select id="atleta2" name="atleta2">
 
@@ -120,7 +106,7 @@
     </label>
   </div>  
   <!-- vencedor12 -->
-  <div class="col-md-10"> 
+  <div class="col-md-10"> <br> 
     <label for="vencedor12"> Vencedor:
      <select id="vencedor12" name="vencedor12">
 
@@ -131,7 +117,7 @@
   </label>
 </div> 
 <!-- Vencido -->
-<div class="col-md-10"> 
+<div class="col-md-10"> <br> 
   <label for="vencido"> Vencido:
    <select id="vencido" name="vencido">
 
@@ -148,7 +134,7 @@
 <!-- Outros detalhes --> 
 
 <div class="form-group col-md-12">
- <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+ <br> <label for="descricao" class="col-sm-4 col-form-label col-form-label-sm">Outros detalhes
 
   <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
 </label>
@@ -159,4 +145,61 @@
 </div>
 </form>
 
-@endsection 
+
+
+
+<table class="table table-striped">    
+
+ <thead>
+  <tr>
+    <th>ID</th> 
+    <th>Torneio</th> 
+    <th>Atleta 1</th>
+    <th>Escalão</th> 
+    <th>Atleta 2</th> 
+    <th>Júri</th>
+    <th>Vencedor</th> 
+  </tr>
+</thead>
+
+@foreach($luta12 as $post)
+<tr>
+  <td>{{$post['id']}}</td> 
+  <td>{{$post['torneio']}}</td>
+  <td>{{$post['atleta1']}}</td>
+  <td>{{$post['escalao']}}</td>
+  <td>{{$post['atleta2']}}</td>
+  <td>{{$post['juri']}}</td>
+  <td>{{$post['vencedor12']}}</td>  
+  @endforeach
+</table>
+
+
+<table class="table table-striped">  
+  <thead>   
+
+   <h3> Competidores do grupo A</h3>  
+   <thead>
+    <tr>
+      <th>ID</th> 
+      <th>Torneio</th> 
+      <th>Atleta 1</th>
+      <th>Escalão</th> 
+      <th>Atleta 2</th> 
+      <th>Sexo</th>  
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($grupo as $post)
+    <tr>
+      <td>{{$post['id']}}</td> 
+      <td>{{$post['torneio']}}</td>
+      <td>{{$post['atleta1']}}</td>
+      <td>{{$post['escalao']}}</td>
+      <td>{{$post['atleta2']}}</td> 
+      <td>{{$post['sexo']}}</td>
+      @endforeach
+    </tbody> 
+  </table>
+
+  @endsection 

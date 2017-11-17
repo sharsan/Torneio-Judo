@@ -84,7 +84,7 @@
    <!-- Outros detalhes --> 
 
    <div class="form-group col-md-10">
-    <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm"> Outros detalhes
+    <label for="descricao" class="col-sm-4 col-form-label col-form-label-sm"> Outros detalhes
       <br>
       <textarea name="descricao" rows="8" cols="90"></textarea> 
     </label>

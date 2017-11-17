@@ -23,9 +23,8 @@
 
 <form method="post"  action="{{url('finalista')}}">
 
-  {{-- Grupo A --}}
-
-  <h3>Grupo A</h3><br> 
+  {{-- Grupo A --}} 
+  <center><h3>Grupo A</h3></center><br> 
 
   <table class="table table-striped">   
 
@@ -38,7 +37,7 @@
       <th>Júri</th> 
     </tr>
   </thead>
-  
+
   @foreach($luta12 as $post)
   <tr>
     <td>{{$post['id']}}</td> 
@@ -47,11 +46,11 @@
     <td>{{$post['vencedor12']}}</td> 
     <td>{{$post['juri']}}</td>   
     @endforeach
-  </table>
+  </table>   
 
   {{-- Grupo B --}}
   
-  <h3>Grupo B</h3><br>
+  <center><h3>Grupo B</h3></center><br>
 
   <table class="table table-striped">   
 
@@ -121,23 +120,21 @@
 
       <div class="row"> 
 
-       <div class="form-group col-md-8">    
-         <h3>Selecione os finalistas</h3>   
+        <div class="form-group col-md-12"> 
+         <h3>Selecione os finalistas</h3> 
          <!-- 1º lugar -->
 
          <div class="col-md-10"> <br> 
-          <label for="vencedor12"> Atleta 1:
+          <label for="vencedor12">1º do grupo A:
             <select id="vencedor12" name="vencedor12">
 
               @foreach($luta12 as $luta)
               <option value="{{$luta->vencedor12}}">{{$luta->vencedor12}} </option>
               @endforeach
             </select>
-          </label>    
-        </div> 
-        <!-- 2º lugar -->
-        <div class="col-md-10"> 
-          <label for="vencedor34"> Atleta 2:
+          </label>      <b>  VS  </b>
+          <!-- 2º lugar --> 
+          <label for="vencedor34">1º do grupo B:
            <select id="vencedor34" name="vencedor34">
 
             @foreach($luta34 as $luta)
@@ -147,23 +144,23 @@
         </label>
       </div>  
       <!-- Vencedor -->
-      <div class="col-md-10"> 
+      <div class="col-md-6"> <br>
         <label for="primeiro"> Vencedor:
          <select id="primeiro" name="primeiro">
 
-          @foreach($luta12 as $l12)
-          <option value="{{$l12->vencedor12}}">{{$l12->vencedor12}} </option>
+          @foreach($atleta as $atl)
+          <option value="{{$atl->nome}}">{{$atl->nome}} </option>
           @endforeach
         </select> 
       </label>
     </div> 
     <!-- Vencido -->
-    <div class="col-md-10"> 
+    <div class="col-md-10"> <br>
       <label for="segundo"> Vencido:
        <select id="segundo" name="segundo">
 
-        @foreach($luta12 as $l12)
-        <option value="{{$l12->vencido}}">{{$l12->vencido}} </option>
+        @foreach($atleta as $atl2)
+        <option value="{{$atl2->nome}}">{{$atl2->nome}} </option>
         @endforeach
       </select> 
     </label>
@@ -175,7 +172,7 @@
 <!-- Outros detalhes --> 
 
 <div class="form-group col-md-12">
- <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
+ <br> <label for="descricao" class="col-sm-4 col-form-label col-form-label-sm">Outros detalhes
 
   <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
 </label>

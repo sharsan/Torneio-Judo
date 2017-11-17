@@ -16,8 +16,10 @@ class Luta12Controller extends Controller
 
   public function index()
   {
-   $luta12 = Luta12::all()->toArray();        
-   return view('luta12.index', compact('luta12'));
+   $luta12 = Luta12::all()->toArray(); 
+   
+   $grupo = Grupo::all();     
+   return view('luta12.index', compact('luta12','grupo'));
  } 
 
  public function create()
