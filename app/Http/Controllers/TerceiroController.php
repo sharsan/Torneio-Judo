@@ -54,7 +54,8 @@ class TerceiroController extends Controller
    $this->validate(request(), [
                  // 'nome' => 'required|unique:terceiros|max:40',  
      'vencido12' => 'required|max:40',
-     'vencido34' => 'required|max:40'
+     'vencido34' => 'required|max:40',
+     'terceiro' => 'required|max:40'
    ]);
    $terceiro = new Terceiro([
      'torneio' => $request->get('torneio'), 
@@ -79,7 +80,8 @@ public function update(Request $request, $id)
 {   request()->validate(
  [ 
   'vencido12' => 'required|max:40',
-  'vencido34' => 'required|max:40'
+  'vencido34' => 'required|max:40',
+  'terceiro' => 'required|max:40'
 ]);
 Terceiro::find($id)->update($request->all());
 

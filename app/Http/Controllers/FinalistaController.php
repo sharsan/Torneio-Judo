@@ -19,7 +19,10 @@ class FinalistaController extends Controller
  public function index()
  {
    $finalista =Finalista::all()->toArray();  
-   return view("finalista.index",compact('finalista'));
+   
+   $tatami12 = Tatami12::all();
+   $tatami34 = Tatami34::all();
+   return view("finalista.index",compact('finalista','tatami12','tatami34'));
  }  
 
  public function create()

@@ -8,8 +8,8 @@ use App\Atleta;
 use App\Escalao;
 use App\Finalista; 
 use App\Grupo;   
-use App\Luta12;  
-use App\Luta34;  
+use App\Tatami12;  
+use App\Tatami34;  
 use App\Torneio; 
 use App\Terceiro;  
 
@@ -31,12 +31,12 @@ class QualificacoesController extends Controller
    $escalao = Escalao::all();
    $finalista = Finalista::all();
    $grupo = Grupo::all();
-   $luta12 = Luta34::all();
-   $luta34 = Luta34::all();
+   $tatami12 = Tatami34::all();
+   $tatami34 = Tatami34::all();
    $torneio= Torneio::all();
    $terceiro= Terceiro::all();
 
-   return view("qualificacoes.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'finalista'=>$finalista,'grupo'=>$grupo,'luta12'=>$luta12,'luta34'=>$luta34,'terceiro'=>$terceiro,'torneio'=>$torneio]); 
+   return view("qualificacoes.create",['arbitro'=>$arbitro,'atleta'=>$atleta,'escalao'=>$escalao,'finalista'=>$finalista,'grupo'=>$grupo,'tatami12'=>$tatami12,'tatami34'=>$tatami34,'terceiro'=>$terceiro,'torneio'=>$torneio]); 
  } 
 
  public function edit($id)
@@ -48,13 +48,13 @@ class QualificacoesController extends Controller
    $escalao = Escalao::all();
    $finalista = Finalista::all();
    $grupo = Grupo::all();
-   $luta12 = Luta34::all();
-   $luta34 = Luta34::all();
+   $tatami12 = Tatami34::all();
+   $tatami34 = Tatami34::all();
    $torneio= Torneio::all();
    $terceiro= Terceiro::all();
 
 
-   return view('qualificacoes.edit', compact('qualificacoes','id','arbitro','atleta','escalao','finalista','grupo','luta12','luta34','terceiro','torneio')); 
+   return view('qualificacoes.edit', compact('qualificacoes','id','arbitro','atleta','escalao','finalista','grupo','tatami12','tatami34','terceiro','torneio')); 
  } 
 
  public function update(Request $request, $id)

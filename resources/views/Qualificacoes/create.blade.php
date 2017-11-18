@@ -1,10 +1,10 @@
 @extends('admin')
 @section('content')
-<title>Luta final </title>
+<title>Registrar finais </title>
 <div class="container"> 
-  <center> <h2>Registrar finais de cada escalão</h2></center><br>  
-
-  <a href="{{URL::to('finalista')}}" title=""><h4>Finalistas</h4></a>
+  <h2>Registrar finalistas</h2><br> 
+  <a href="{{URL::to('qualificacoes')}}" title=""><h4><- voltar</h4></a>
+  
   @if ($errors->any())
   <div class="alert alert-danger">
     <ul>
@@ -21,10 +21,9 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('finalista')}}">
 
-  {{-- Grupo A --}} 
-  <center><h3>Grupo A</h3></center><br> 
+<form method="post"  action="{{url('finalista')}}"> 
+  <h3>Grupo A</h3><br> 
 
   <table class="table table-striped">   
 
@@ -33,25 +32,24 @@
       <th>ID</th> 
       <th>Torneio</th> 
       <th>Escalão</th> 
-      <th>1º do grupo A</th> 
+      <th>1º do grupo A</th>
+      <th>2º do grupo A</th> 
       <th>Júri</th> 
     </tr>
   </thead>
-
+  
   @foreach($tatami12 as $post)
   <tr>
     <td>{{$post['id']}}</td> 
     <td>{{$post['torneio']}}</td>
     <td>{{$post['escalao']}}</td>
-    <td>{{$post['vencedor12']}}</td> 
+    <td>{{$post['vencedor']}}</td>
+    <td>{{$post['vencido']}}</td>
     <td>{{$post['juri']}}</td>   
     @endforeach
-  </table>   
+  </table>
 
-  {{-- Grupo B --}}
-  
-  <center><h3>Grupo B</h3></center><br>
-
+  <h3>Grupo B</h3><br>
   <table class="table table-striped">   
 
     <thead>
@@ -59,7 +57,8 @@
         <th>ID</th> 
         <th>Torneio</th> 
         <th>Escalão</th> 
-        <th>1º do grupo B</th> 
+        <th>1º do grupo B</th>
+        <th>2º do grupo B</th> 
         <th>Júri</th> 
       </tr>
     </thead>
@@ -69,10 +68,14 @@
       <td>{{$post['id']}}</td> 
       <td>{{$post['torneio']}}</td>
       <td>{{$post['escalao']}}</td>
-      <td>{{$post['vencedor34']}}</td> 
+      <td>{{$post['vencedor']}}</td>
+      <td>{{$post['vencido']}}</td>
       <td>{{$post['juri']}}</td>   
       @endforeach
     </table>
+
+
+
 
 
     {{csrf_field()}}   
@@ -102,7 +105,7 @@
           </select>
         </label>    
       </div> 
-
+      
       <!-- juri : -->
       <div class="col-md-10"> <br> 
         <label for="juri"> Júri :
@@ -115,71 +118,69 @@
         </label>    
       </div> 
 
-      {{-- Selecione os finalistas --}}
-
-
+      
       <div class="row"> 
 
-        <div class="form-group col-md-12"> 
-          <h3>Selecione os finalistas do escalão</h3> 
-          <!-- 1º lugar -->
+       <div class="form-group col-md-8">    
+         <h3>Selecionea os atletas</h3>   
+         <!-- 1º lugar -->
+         
+         <div class="col-md-10"> <br> 
+          <label for="primeiro"> 1º lugar:
+            <select id="primeiro" name="primeiro">
 
-          <div class="col-md-10"> <br> 
-            <label for="vencedor12">1º do grupo A:
-              <select id="vencedor12" name="vencedor12">
-
-                @foreach($tatami12 as $ttm12)
-                <option value="{{$ttm12->vencedor12}}">{{$ttm12->vencedor12}} </option>
-                @endforeach
-              </select>
-            </label>      <b>  VS  </b>
-            <!-- 2º lugar --> 
-            <label for="vencedor34">1º do grupo B:
-             <select id="vencedor34" name="vencedor34">
-
-              @foreach($tatami34 as $ttm34)
-              <option value="{{$ttm34->vencedor34}}">{{$ttm34->vencedor34}} </option>
+              @foreach($finalista as $final)
+              <option value="{{$final->primeiro}}">{{$final->primeiro}} </option>
               @endforeach
-            </select> 
-          </label>
-        </div>  
-        <!-- Vencedor -->
-        <div class="col-md-6"> <br>
-          <label for="primeiro"> Vencedor:
-           <select id="primeiro" name="primeiro">
+            </select>
+          </label>    
+        </div> 
+        <!-- 2º lugar -->
+        <div class="col-md-10"> 
+          <label for="segundo"> 2º lugar:
+           <select id="segundo" name="segundo">
 
-            @foreach($atleta as $atl)
-            <option value="{{$atl->nome}}">{{$atl->nome}} </option>
+            @foreach($finalista as $final)
+            <option value="{{$final->segundo}}">{{$final->segundo}} </option>
             @endforeach
           </select> 
         </label>
       </div> 
-      <!-- Vencido -->
-      <div class="col-md-10"> <br>
-        <label for="segundo"> Vencido:
-         <select id="segundo" name="segundo">
+      <!-- 3º lugar -->
+      <div class="col-md-10"> 
+        <label for="terceiro"> 3º lugar:
+          <select id="terceiro" name="terceiro">
 
-          @foreach($atleta as $atl2)
-          <option value="{{$atl2->nome}}">{{$atl2->nome}} </option>
+            @foreach($terceiro as $final)
+            <option value="{{$final->terceiro}}">{{$final->terceiro}} </option>
+            @endforeach
+          </select> 
+        </label>
+      </div>
+      <!-- 3º lugar -->
+  {{--   <div class="col-md-10"> 
+      <label for="terceiro2"> 3º lugar:
+        <select id="terceiro2" name="terceiro2">
+          
+          @foreach($atleta as $atl)
+          <option value="{{$atl->nome}}">{{$atl->nome}} </option>
           @endforeach
         </select> 
       </label>
-    </div>  
-  </div> 
-
-
+    </div> --}}
+  </div>  
 
   <!-- Outros detalhes --> 
 
   <div class="form-group col-md-12">
-   <br> <label for="descricao" class="col-sm-4 col-form-label col-form-label-sm">Outros detalhes
+   <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
 
     <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
   </label>
 </div>
 
 <div class="form-group col-md-4"> 
-  <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar finalistas</button>  
+  <button type="submit" class="btn btn-success" style="margin-left:38px">Adicionar qualificados</button>  
 </div>
 </form>
 

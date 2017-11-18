@@ -4,7 +4,7 @@
 <div class="container"> 
  <h3><center><th>Qualificações</th></center> </h3>
 
- <a href="{{URL::to('grupo')}}" title=""><h4><- Fase de grupos</h4></a>
+ <a href="{{URL::to('grupo')}}" title=""><h4> Fase de grupos</h4></a>
  <table class="table table-striped">  
   <thead>   <a href="{{URL::to('finalista/create')}}" title=""><h4>+ adicionar finalistas</h4></a>
 

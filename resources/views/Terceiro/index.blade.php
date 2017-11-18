@@ -4,7 +4,8 @@
 <div class="container"> 
  <h3><center><th>Terceiro lugar</th></center> </h3>
 
- <a href="{{URL::to('grupo')}}" title=""><h4><- Fase de grupos</h4></a>
+ <a href="{{URL::to('grupo')}}" title=""><h4>Fase de grupos</h4></a>
+ <a href="{{URL::to('qlf')}}" title=""><h4>Ver finalistas</h4></a>
 
  <center><h2>Lista para a disputa dos 3ºs lugares</h2> </center> <br>
 
@@ -42,7 +43,7 @@
       <tr>
         <th>ID</th> 
         <th>Torneio</th> 
-        <th>Atleta 1</th>
+        <th>Atleta 2</th>
         <th>Escalão</th>  
         <th>Sexo</th>  
       </tr>
@@ -66,38 +67,42 @@
       <thead>
         <tr>
           <th>ID</th> 
-          <th>Nome do campeonato</th>
-          <th>Escalão</th> 
-          <th>3º lugar</th> 
+          <th>Nome do campeonato</th> 
+          <th>2º do grupo A</th> 
+          <th>Escalão</th>
+          <th>2º do grupo B</th> 
           <th>Júri</th>
-          <th>Criado em</th>
-          <th>Actualizado em</th>  
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($terceiro as $post)
-        <tr>
-          <td>{{$post['id']}}</td>
-          <td>{{$post['torneio']}}</td>
-          <td>{{$post['escalao']}}</td>
-          <td>{{$post['terceiro']}}</td>  
-          <td>{{$post['juri']}}</td>
-          <td>{{$post['created_at']}}</td>
-          <td>{{$post['updated_at']}}</td> 
+          <th>3º lugar</th> 
+    {{--       <th>Criado em</th>
+      <th>Actualizado em</th> --}}  
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($terceiro as $post)
+    <tr>
+      <td>{{$post['id']}}</td>
+      <td>{{$post['torneio']}}</td>
+      <td>{{$post['vencido12']}}</td> 
+      <td>{{$post['escalao']}}</td>
+      <td>{{$post['vencido34']}}</td>
+      <td>{{$post['juri']}}</td>
+      <td>{{$post['terceiro']}}</td> 
+  {{--         <td>{{$post['created_at']}}</td>
+  <td>{{$post['updated_at']}}</td>  --}}
 
 
-          <td><a href="{{action('TerceiroController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
-          <td>
-            <form action="{{action('TerceiroController@destroy', $post['id'])}}" method="post">
-              {{csrf_field()}}
-              <input name="_method" type="hidden" value="DELETE">
-              <button class="btn btn-danger" type="submit">Apagar</button>
-            </form>
-          </td>
+  <td><a href="{{action('TerceiroController@edit', $post['id'])}}" class="btn btn-warning">Editar</a></td>
+  <td>
+    <form action="{{action('TerceiroController@destroy', $post['id'])}}" method="post">
+      {{csrf_field()}}
+      <input name="_method" type="hidden" value="DELETE">
+      <button class="btn btn-danger" type="submit">Apagar</button>
+    </form>
+  </td>
 
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
-  @endsection
+</tr>
+@endforeach
+</tbody>
+</table>
+</div>
+@endsection

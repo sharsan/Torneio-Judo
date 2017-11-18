@@ -3,7 +3,7 @@
 <title>3º e 4º lugar</title>
 <div class="container"> 
   <h2>Registrar final do 3º e 4º lugar</h2><br> 
-  <a href="{{URL::to('finalista')}}" title=""><h4><- voltar</h4></a>
+  <a href="{{URL::to('terceiro')}}" title=""><h4>Ver 3ºs lugares</h4></a>
   <a href="{{URL::to('qlf')}}" title=""><h4>Ver finais</h4></a>
   
   @if ($errors->any())
@@ -22,7 +22,7 @@
 </div><br>
 @endif
 
-<form method="post"  action="{{url('finalista')}}"> 
+<form method="post"  action="{{url('terceiro')}}"> 
   <h3>Grupo A</h3><br> 
 
   <table class="table table-striped">   
@@ -69,12 +69,13 @@
       <td>{{$post['juri']}}</td>   
       @endforeach
     </table>
-
-
+    
     {{csrf_field()}}   
+
     <!-- <div class="row">   -->
      <div class="row">
       <div class="form-group col-md-8">   
+
        <!-- Nome do campeonato  -->  
 
        <div class="col-md-10"> <br> 
@@ -111,16 +112,16 @@
         </label>    
       </div> 
 
-
       <div class="row"> 
 
        <div class="form-group col-md-8">    
-         <h3>Selecione os finalistas</h3>   
+         <h3>Selecione os finalistas</h3>  
+
          <!-- 1º lugar -->
 
          <div class="col-md-10"> <br> 
-          <label for="vencedor12"> Atleta 1:
-            <select id="vencedor12" name="vencedor12">
+          <label for="vencido12"> Atleta 1:
+            <select id="vencido12" name="vencido12">
 
               @foreach($tatami12 as $ttm12)
               <option value="{{$ttm12->vencido}}">{{$ttm12->vencido}} </option>
@@ -128,10 +129,11 @@
             </select>
           </label>    
         </div> 
+
         <!-- 2º lugar -->
         <div class="col-md-10"> 
-          <label for="vencedor34"> Atleta 2:
-           <select id="vencedor34" name="vencedor34">
+          <label for="vencido34"> Atleta 2:
+           <select id="vencido34" name="vencido34">
 
             @foreach($tatami34 as $ttm34)
             <option value="{{$ttm34->vencido}}">{{$ttm34->vencido}} </option>
@@ -139,39 +141,27 @@
           </select> 
         </label>
       </div>  
+
       <!-- Vencedor -->
       <div class="col-md-10"> 
-        <label for="primeiro"> Vencedor:
-         <select id="primeiro" name="primeiro">
+        <label for="terceiro"> Vencedor:
+         <select id="terceiro" name="terceiro">
 
           @foreach($inscrito as $insc)
           <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
           @endforeach
         </select> 
       </label>
-    </div> 
-    <!-- Vencido -->
-    <div class="col-md-10"> 
-      <label for="segundo"> Vencido:
-       <select id="segundo" name="segundo">
-
-        @foreach($inscrito as $insc)
-        <option value="{{$insc->atleta}}">{{$insc->atleta}} </option>
-        @endforeach
-      </select> 
-    </label>
+    </div>  
   </div>  
-</div> 
 
+  <!-- Outros detalhes --> 
 
+  <div class="form-group col-md-12">
+   <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
 
-<!-- Outros detalhes --> 
-
-<div class="form-group col-md-12">
- <br> <label for="descricao" class="col-sm-2 col-form-label col-form-label-sm">Outros detalhes
-
-  <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
-</label>
+    <br> <br><textarea name="descricao" rows="8" cols="80"></textarea> 
+  </label>
 </div>
 
 <div class="form-group col-md-4"> 
